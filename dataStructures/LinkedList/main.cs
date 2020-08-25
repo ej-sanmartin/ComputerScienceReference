@@ -1,4 +1,5 @@
 using System;
+
 public class LinkedList {
     private class Node {
         int value;
