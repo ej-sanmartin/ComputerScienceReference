@@ -41,7 +41,9 @@ public class TopologicalSortGraph {
         bool[] visited = new bool[vertices];
 
         for(int vertex = 0; vertex < vertices; vertex++){
-            if(visited[vertex] == false){ TopologicalSortHelper(vertex, visited, stack); }
+            if(visited[vertex] == false){
+                TopologicalSortHelper(vertex, visited, stack);
+            }
         }
 
         // At this point, stack contains sorted vertices. If you are not printing items out,
