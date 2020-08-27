@@ -1,4 +1,5 @@
 // T - O(n^2), S - O(1)
+// In place and stable
 public class BubbleSort {
     public static void BubbleSort(int[] arr){
         int n = arr.Length;
