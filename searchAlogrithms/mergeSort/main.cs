@@ -8,7 +8,7 @@ public class MergeSort {
         if(list.Count <= 1){ return list; }
 
         List<int> left = new List<int>();
-        List<int> right = new List<int>();
+        List<int> right = lists;
 
         int middle = list.Count/2;
 
@@ -31,7 +31,7 @@ public class MergeSort {
 
         while(left.Count > 0 || right.Count > 0){
             if(left.Count > 0 && right.Count > 0){
-                if(left.First() <= right.First(){
+                if(left.First() <= right.First()){
                     result.Add(left.First());
                     left.Remove(left.First());
                 } else {
