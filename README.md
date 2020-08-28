@@ -12,11 +12,15 @@
 
 Hello! 
 
-This repository is fille with code implementations of various data structures, search algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
+This repository is filled with code implementations of fundamental and some advance data structures, search algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
 
-This repository was originally written in my notebook while I was studying for coding interviews and bettering my software engineering skills. I had decided to post my notes and implementations online so I have a digital copy of all the notes and implementation I took the time and hard work to figure out and because I did have some difficulties finding resources for implementing data structures and algorithms in C#, especially for the more advance concepts. Generally, I found a lot of Java, C++, and Python resources and those wanting to improve their C# skills deserve to have some quality resources as well!
+Feel free to look over my C# references and don't be shy if you find something wrong, found better ways to do things, or want to contribute to the bettering of this repository. Anything helps and is welcomed!
 
-So feel free to look over my C# references and don't be shy if you find something wrong, found better ways to do things, or want to contribute to this repository. Anything helps!
+
+## Inspiration
+
+
+This repository was originally written in my notebook while I was studying for coding interviews and bettering my software engineering skills. I had decided to post my notes and implementations online so I have a digital copy of all the notes and implementation I took the time and hard work to figure out. I also decided to create this repository because I did have some difficulties finding resources for implementing data structures and algorithms in C#, especially for the more advance concepts. Generally, I found a lot of Java, C++, and Python resources but I thought it would be great for C# enthusiasts to have fundamentals they'd need to know all in one place.
 
 
 ## Organization
