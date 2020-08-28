@@ -26,9 +26,9 @@ This repository was originally written in my notebook while I was studying for c
 ## Organization
 
 
-This reference is divided into three folders, to organize the data structure, search algorithm, and graph theory sections. Within those folders, there are sub folders for each individual concept. This is so we can add implementations in other languages, extra files for testing or general notes.
+This reference is divided into three folders: data structure, search algorithm, and graph theory. Within those folders, there are sub folders for each individual concept. This is so we can add implementations in other languages, extra files for testing or general notes.
 
-Note that each main.cs file contains the actual classes for the various data structures and algorithms but they do not contain Main functions. You may clone or test to these files on your own, although it would be good practice for myself to test them out.
+Note that each main.cs file contains the actual classes for the various data structures and algorithms but they do not contain Main functions. You may clone or test these files on your own, although in the future I may add my own tests in this repository.
 
 
 
@@ -59,6 +59,7 @@ Note that each main.cs file contains the actual classes for the various data str
     * Selection Sort
 
 * Graph Theory
+    * Breadth First Traversal
     * Topological Sort
 
 
