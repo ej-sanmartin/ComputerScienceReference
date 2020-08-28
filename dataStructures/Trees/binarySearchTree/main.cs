@@ -16,6 +16,11 @@ public class BinarySearchTree {
             if(left == null){ return this; }
             else { return left.min(); }
         }
+
+        public Node max(){
+            if(right == null){ return this; }
+            else { return right.max(); }
+        }
     }
 
     private Node root;
@@ -23,7 +28,10 @@ public class BinarySearchTree {
     public BinarySearchTree(){ root = null; }
 
     // T - O(n)
-    public Node FindMin(Node node){ return node.min(); }
+    private Node FindMin(Node node){ return node.min(); }
+
+    // T - O(n)
+    private Node FindMax(Node node){ return node.max(); }
 
     // T - O(logn)
     public void Insert(int key, String value){
