@@ -2,7 +2,7 @@ using System;
 
 // This implementation of the tree is implemented with a fixed array
 public class FenwickTree {
-    int[] arr;
+    private int[] arr;
     public FenwickTree(int size){ arr = new int[size + 1]; }
 
     // DRY-ing code since this showed up more than once, just manually handles if developer trying to access non existent index

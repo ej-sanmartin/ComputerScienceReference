@@ -3,14 +3,14 @@ using System;
 // S - O(n)
 public class BTree {
     private class Node {
-        private int childrenCount;
-        private Entry[] children = new Entry[childrenCount];
+        public int childrenCount;
+        public Entry[] children = new Entry[childrenCount];
         public Node(int childrenCount){ this.childrenCount = childrenCount; }
     }
 
     private class Entry {
-        int key, value;
-        Node next;
+        public int key, value;
+        public Node next;
         public Entry(int key, int value, Node next){
             this.key = key;
             this.value = value;

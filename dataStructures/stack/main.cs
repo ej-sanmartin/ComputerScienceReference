@@ -1,8 +1,8 @@
 public class Stack {
     private class Node {
-        private int value;
-        private Node next;
-        private Node(int value){ this.value = value; }
+        public int value;
+        public Node next;
+        public Node(int value){ this.value = value; }
     }
 
     private Node head;

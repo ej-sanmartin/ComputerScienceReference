@@ -5,8 +5,8 @@ public class HashTable {
     private HashEntry[] data;
 
     private class HashEntry {
-        String key, value;
-        HashEntry next;
+        public String key, value;
+        public HashEntry next;
         public HashEntry(String key, String value){
             this.key = key;
             this.value = value;

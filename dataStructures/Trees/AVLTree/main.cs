@@ -2,8 +2,8 @@ using System;
 
 public class AVLTree {
     private class Node {
-        private int value, height, balanceFactor;
-        private Node left, right;
+        public int value, height, balanceFactor;
+        public Node left, right;
         public Node(int value){
             this.value = value;
         }

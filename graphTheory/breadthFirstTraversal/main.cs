@@ -4,8 +4,8 @@ using System.Collections.Generic;
 // Iterative BFT of a Binary Search Tree
 public class BreadthFirstTreeTraversal {
     private class Node {
-        private int value;
-        private Node left, right;
+        public int value;
+        public Node left, right;
         public Node(int value){ this.value = value; }
     }
 

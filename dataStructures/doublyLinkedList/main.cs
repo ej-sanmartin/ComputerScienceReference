@@ -2,8 +2,8 @@ using System;
 
 public class DoublyLinkedList {
     private class Node {
-        private int value;
-        private Node next, previous;
+        public int value;
+        public Node next, previous;
         public Node(int value){ this.value = value; }
     }
 

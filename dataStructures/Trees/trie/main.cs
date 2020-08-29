@@ -4,8 +4,8 @@ using System.Collections.Generic;
 // S - O(word * nodes)
 public class Trie {
     private class Node {
-        Dictionary<char, Node> children;
-        bool endOfWord;
+        public Dictionary<char, Node> children;
+        public bool endOfWord;
         public Node(){
             children = new Dictionary<char, Node>();
             endOfWord = false;
