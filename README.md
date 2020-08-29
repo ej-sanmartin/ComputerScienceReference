@@ -37,8 +37,11 @@ Note that each main.cs file contains the actual classes for the various data str
 
 * Data Structures
     * Trees
-        * Binary Search Tree
         * AVL Tree
+        * Binary Search Tree
+        * Fenwick Tree
+        * Trie
+
     * Doubly Linked List
     * Linked List
     * Hash Table
@@ -49,6 +52,7 @@ Note that each main.cs file contains the actual classes for the various data str
 
 * Search Algorithms
     * Bubble Sort
+
     * Bucket Sort
     * Counting Sort
     * Heap Sort
@@ -60,6 +64,7 @@ Note that each main.cs file contains the actual classes for the various data str
 
 * Graph Theory
     * Breadth First Traversal
+
     * Topological Sort
 
 
