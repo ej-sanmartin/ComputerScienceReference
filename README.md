@@ -47,6 +47,7 @@ Note that each main.cs file contains the actual classes for the various data str
         * Splay Tree
 
     * Doubly Linked List
+    * Dynamic Array
     * Linked List
     * Hash Table
     * Queue
