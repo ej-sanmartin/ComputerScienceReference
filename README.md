@@ -41,6 +41,7 @@ Note that each main.cs file contains the actual classes for the various data str
         * Binary Search Tree
         * Fenwick Tree
         * Trie
+        * Red-Black Tree
         * Splay Tree
 
     * Doubly Linked List
