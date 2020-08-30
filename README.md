@@ -40,6 +40,8 @@ Note that each main.cs file contains the actual classes for the various data str
         * AVL Tree
         * Binary Search Tree
         * Fenwick Tree
+        * Max Heap
+        * Priority Queue
         * Trie
         * Red-Black Tree
         * Splay Tree
@@ -47,8 +49,6 @@ Note that each main.cs file contains the actual classes for the various data str
     * Doubly Linked List
     * Linked List
     * Hash Table
-    * Max Heap
-    * Priority Queue
     * Queue
     * Stack
 
