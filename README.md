@@ -68,6 +68,8 @@ Note that each main.cs file contains the actual classes for the various data str
 * Graph Theory
     * Breadth First Traversal
 
+    * Dijkstra's Algorithm
+    * Graph (Implementations as Adjacency List and Matrix)
     * Topological Sort
 
 
