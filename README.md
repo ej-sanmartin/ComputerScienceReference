@@ -74,6 +74,7 @@ Note that each main.cs file contains the actual classes for the various data str
     * Floyd-Warshall Algorithm
     * Graph (Implementations as Adjacency List and Matrix)
     * Topological Sort
+    * Union Find
 
 
 More to come!
@@ -81,8 +82,20 @@ More to come!
 
 ## What are Data Structures?
 
+Data Structures are essential tools for programmers that help store, organize, and manipulate data. There are many of them and it is important to know when best to use each structure and how they generally work.
+
+Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionary's (which we call Hash Tables in this repository) already built in. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built in to C#.
+
 
 ## What are Search Algorithms?
+
+Search algorithms are self explanatory: they are algorithms which serve to sort a collection of data. There are many types of search algorithms, some fast (Quick Sort) and others terribly slow (Bubble Sort), and some space intensive and some not. [Here](https://www.youtube.com/watch?v=kPRA0W1kECg) is a neat video of common search algorithms visualized.
+
+Search algorithms are important to study as they usually open up to other important programming concepts, such as heapifying with Heap Sort and recursion and divide and conquer with Merge Sort.
+
+Search algorithms are also important to study as they are great ways to ease into Big O notation and space and time trade offs. A simple example, Bubble Sort may be incredibly slow but if your software happens to not care about speed and needs to fit into a small file, it could be a good choice. However, if space is not an issue you can go with a faster search algorithm such as Quick Sort.
+
+C# has an Array.Sort method built in which runs a search algorithm based on the partition size of what's to be sorted. A small collection of elements, a partition size of less than 16 elements, will have C# run an Insertion Sort Algorithm. If the partitions exceeds 2 * LogN where N is the range of the input array, C# uses Heapsort. Otherwise, for most instances, C# will run Quick Sort. Note that the worst case time complexity of the Sort Method is O(n Log n) and the sorting is unstable, meaning that if two elements are equal they may not maintain their order with each other.
 
 
 ## What is Graph Theory?
