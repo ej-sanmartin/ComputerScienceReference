@@ -45,3 +45,10 @@ public class DijkstrasMatrixGraph {
         return minIndex;
     }
 }
+
+// Adjacency List with a Priority Queue (implemented a Min Heap)
+// T - O((|V| + |E|) log|V|) to O(|E|log|V|))
+// S - O(V)
+public class DijkstrasAdjacencyListGraph{
+    
+}

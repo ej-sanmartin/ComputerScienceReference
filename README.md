@@ -41,6 +41,7 @@ Note that each main.cs file contains the actual classes for the various data str
         * Binary Search Tree
         * Fenwick Tree
         * Max Heap
+        * Min Heap
         * Priority Queue
         * Trie
         * Red-Black Tree
