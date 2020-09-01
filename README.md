@@ -67,16 +67,25 @@ Note that each main.cs file contains the actual classes for the various data str
     * Selection Sort
 
 * Graph Theory
-    * Bellman Ford Algorithm
+    * Bellman-Ford Algorithm
 
     * Breadth First Traversal
     * Dijkstra's Algorithm
+    * Floyd-Warshall Algorithm
     * Graph (Implementations as Adjacency List and Matrix)
     * Topological Sort
 
 
 More to come!
 
+
+## What are Data Structures?
+
+
+## What are Search Algorithms?
+
+
+## What is Graph Theory?
 
 
 ## Contributers
