@@ -35,55 +35,57 @@ Note that each main.cs file contains the actual classes for the various data str
 ## Contents
 
 
-* Data Structures
-    * Trees
-        * AVL Tree
+* [Data Structures](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures)
+    * [Trees](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees)
+        * [AVL Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/AVLTree)
 
-        * Binary Search Tree
-        * Fenwick Tree
-        * Max Heap
-        * Min Heap
-        * Priority Queue
-        * Trie
-        * Red-Black Tree
-        * Splay Tree
+        * [B Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/BTree)
+        * [Binary Search Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/BTree)
+        * [Fenwick Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/fenwickTree)
+        * [Max Heap](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/maxHeap)
+        * [Min Heap](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/minHeap)
+        * [Priority Queue](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/priorityQueue)
+        * [Red-Black Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/redBlackTree)
+        * [Splay Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/splayTree)
+        * [Trie](https://github.com/ej-sanmartin/ComputerScienceReference/blob/master/dataStructures/Trees/trie)
 
-    * Doubly Linked List
-    * Dynamic Array
-    * Linked List
-    * Hash Table
-    * Queue
-    * Stack
+    * [Doubly Linked List](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/doublyLinkedList)
+    * [Dynamic Array](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/dyanmicArray)
+    * [Hash Table](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/hashTable)
+    * [Linked List](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/linkedList)
+    * [Queue](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/queue)
+    * [Stack](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/stack)
 
-* Search Algorithms
-    * Bubble Sort
+* [Search Algorithms](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms)
+    * [Bubble Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bubbleSort)
 
-    * Bucket Sort
-    * Counting Sort
-    * Heap Sort
-    * Insertion Sort
-    * Merge Sort
-    * Quick Sort
-    * Radix Sort
-    * Selection Sort
+    * [Bucket Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bucketSort)
+    * [Counting Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/countingSort)
+    * [Heap Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/heapSort)
+    * [Insertion Sort](https://github.com/ej-sanmartin/ComputerScienceReference/blob/master/searchAlogrithms/insertionSort)
+    * [Merge Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/mergeSort)
+    * [Quick Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/quickSort)
+    * [Radix Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/radixSort)
+    * [Selection Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/selectionSort)
 
-* Graph Theory
-    * A* Search Algorithm
+* [Graph Theory](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory)
+    * [A* Search Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/aStarAlgorithm)
 
-    * Bellman-Ford Algorithm
-    * Bidirectional Search Algorthim
-    * Boggle Solver
-    * Breadth First Traversal
-    * Dijkstra's Algorithm
-    * Floyd-Warshall Algorithm
-    * Graph (Implementations as Adjacency List and Matrix)
-    * Johnson's Algorithm
-    * Kruskal's Algorithm
-    * Prim's Algorithm
-    * Tarjan's Algorithm
-    * Topological Sort
-    * Union Find
-    * Viterbi's Algorithm
+    * [Bellman-Ford Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/bellmanFordAlgorithm)
+    * [Bidirectional Search Algorthim](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/bidirectionalSearch)
+    * [Boggle Solver](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/boggleSolver)
+    * [Breadth First Traversal](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/breadthFirstTraversal)
+    * [Depth First Traversal](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/depthFirstTraversal)
+    * [Dijkstra's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/dijkstrasAlgorithm)
+    * [Floyd-Warshall Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/floydWarshall)
+    * [Graph (Implementations as Adjacency List and Matrix)](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/graph)
+    * [Johnson's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/johnsonsAlgorithm)
+    * [Kruskal's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/kruskalsAlgorithm)
+    * [Prim's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/primsAlgorithm)
+    * [Tarjan's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/tarjansAlgorithm)
+    * [Topological Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/topologicalSort)
+    * [Union Find](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/unionFind)
+    * [Viterbi's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/viterbisAlgorithm)
 
 
 More to come!
