@@ -38,6 +38,7 @@ Note that each main.cs file contains the actual classes for the various data str
 * Data Structures
     * Trees
         * AVL Tree
+
         * Binary Search Tree
         * Fenwick Tree
         * Max Heap
@@ -67,14 +68,22 @@ Note that each main.cs file contains the actual classes for the various data str
     * Selection Sort
 
 * Graph Theory
-    * Bellman-Ford Algorithm
+    * A* Search Algorithm
 
+    * Bellman-Ford Algorithm
+    * Bidirectional Search Algorthim
+    * Boggle Solver
     * Breadth First Traversal
     * Dijkstra's Algorithm
     * Floyd-Warshall Algorithm
     * Graph (Implementations as Adjacency List and Matrix)
+    * Johnson's Algorithm
+    * Kruskal's Algorithm
+    * Prim's Algorithm
+    * Tarjan's Algorithm
     * Topological Sort
     * Union Find
+    * Viterbi's Algorithm
 
 
 More to come!
@@ -84,7 +93,7 @@ More to come!
 
 Data Structures are essential tools for programmers that help store, organize, and manipulate data. There are many of them and it is important to know when best to use each structure and how they generally work.
 
-Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionary's (which we call Hash Tables in this repository) already built in. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built in to C#.
+Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionary's (which we call Hash Tables in this repository) already built in. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built into C#.
 
 
 ## What are Search Algorithms?
@@ -99,6 +108,15 @@ C# has an Array.Sort method built in which runs a search algorithm based on the 
 
 
 ## What is Graph Theory?
+
+Graph Theory is the study of graphs and how the relationships  between various entities could be best represented. Graphs are made up of vertices and edges, also called nodes and links. Using a graph that represents a neighborhood, think of a vertex as each individual house and an edge as the route between one house and the others.
+
+Note that graphs can either be directed or undirected. A directed graph means that edges have a direction to another vertex that it is pointing to, meanwhile an undirected graph is a graph where the edges do not have this property.
+
+Graphs can be represented in many ways but in this repository we focus on Adjacency Matrices and Adjacency Lists. An adjacency matrix is constructed via a 2D array while an Adjacency List can be constructed in many ways, such as a Hash Table with key value pairs of vertex to that vertex's list of edges. An adjacency matrix takes up a lot of space and is typically slower compared to the list but it is easier to implement. Adjacency lists are faster and space efficient but larger data sets can make implementing algorithms more complicated that it should be. It is important to know how to implement both kinds of graphs and when best to use which.
+
+Graph theory is a great way to solve many kinds of relational problems and is widely used in software engineering. Some real world applications are to construct the relationships in a social media site, path finding in games or GPS, and garbage collection for programming languages.
+
 
 
 ## Contributers

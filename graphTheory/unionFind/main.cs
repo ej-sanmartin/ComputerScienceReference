@@ -29,6 +29,20 @@ public class UnionFindGraph {
     }
 
     public int isCycle(UnionFindGraph graph){
-        
+        int[] parent = new int[graph.vertices];
+
+        for(int vertex = 0; vertex < graph.vertices; vertex++){
+            parent[vertex] = -1;
+        }
+
+        for(int edge = 0; edge < graph.edges; edge++){
+            int x = Find(parent, graph.edgesArr[edge].source);
+            int y = Find(parent, graph.edgesArr[edge].destination);
+
+            if(x == y){ return 1; }
+            Union(parent, x, y);
+        }
+
+        return 0;
     }
 }
