@@ -38,7 +38,6 @@ public class MinHeap {
                 } else {
                     Swap(index, rightChild(index));
                     MinHeapify(index, rightChild(index));
-
                 }
             }
         }
