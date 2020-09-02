@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 
 // T - O(V), Graph represented as an AL
-public class Graph<T> {
+public class AdjacencyListGraph<T> {
     public List<T> vertexList;
     public Dictionary<T, List<T>> adjacencyList;
 
-    public Graph(T rootVertexKey){
+    public AdjacencyListGraph(T rootVertexKey){
         AddVertex(rootVertexKey);
     }
 
@@ -30,4 +30,23 @@ public class Graph<T> {
     }
 }
 
-// TODO: Graph as an Adjacency Matrix
+// Graph as an Adjacency Matrix
+public class AdjacencyMatrixGraph {
+    private bool[][] adjacencyMatrix;
+    private int vertices;
+
+    public AdjacencyMatrixGraph(int vertices){
+        this.vertices = vertices;
+        adjacencyMatrix = new bool[vertices][vertices];
+    }
+
+    public void AddEdge(int row, int column){
+        adjacencyMatrix[row][column] = true;
+        adjacencyMatrix[column][row] = true;
+    }
+
+    public void RemoveEdge(int row, int column){
+        adjacencyMatrix[row][column] = false;
+        adjacencyMatrix[column][row] = false;
+    }
+}
