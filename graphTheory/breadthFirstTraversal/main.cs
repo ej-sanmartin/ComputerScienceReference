@@ -31,8 +31,6 @@ public class BreadthFirstTreeTraversal {
     }
 }
 
-// Recursive Breadth First Search
-
 
 // Iterative Breadth First Search of a graph
 public class BreadFirstTraversalGraph {
