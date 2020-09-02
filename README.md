@@ -135,4 +135,4 @@ Graph theory is a great way to solve many kinds of relational problems and is wi
 
 ## License
 
-[MIT](https://github.com/mcinglis/markdown-licenses/blob/master/mit.md)
+[MIT](https://github.com/ej-sanmartin/ComputerScienceReference/blob/master/LICENSE)
