@@ -38,11 +38,68 @@ public class Boggle {
         return (row >= 0 && row < ROW && column >= 0 && column < COLUMN && !visited[row, column]);
     }
 
+    // will print out word if found in Boggle 2D array
     public void SearchWord(TrieNode root, char[,] boggle, int row, int column, bool[,] visited, String str){
-        
+        if(root.isLeaf == true){ Console.WriteLine(str); }
+
+        if(isSafe(row, column, visited)){
+            visited[row, column] = true;
+
+            for(int child = 0; child < SIZE; child++){
+                if(root.children[child] != null){
+                    char c = (char)(child + 'A');
+
+                    if(isSafe(row + 1, column + 1, visited) && boggle[row + 1, column + 1] == c){
+                        SearchWord(root.children[child], boggle, row + 1, column + 1, visited, str + c);
+                    }
+
+                    if(isSafe(row, column + 1, visited) && boggle[row, column + 1] == c){
+                        SearchWord(root.children[child], boggle, row, column + 1, visited, str + c);
+                    }
+
+                    if(isSafe(row - 1, column + 1, visited) && boggle[row - 1, column + 1] == c){
+                        SearchWord(root.children[child], boggle, row - 1, column + 1, visited, str + c);
+                    }
+
+                    if(isSafe(row + 1, column, visited) && boggle[row + 1, column] == c){
+                        SearchWord(root.children[child], boggle, row + 1, column, visited, str + c);
+                    }
+
+                    if(isSafe(row + 1, column - 1, visited) && boggle[row + 1, column - 1] == c){
+                        SearchWord(root.children[child], boggle, row + 1, column - 1, visited, str + c);
+                    }
+
+                    if(isSafe(row, column - 1, visited) && boggle[row, column - 1] == c){
+                        SearchWord(root.children[child], boggle, row, column - 1, visited, str + c);
+                    }
+
+                    if(isSafe(row - 1, column - 1, visited) && boggle[row - 1, column - 1] == c){
+                        SearchWord(root.children[child], boggle, row - 1, column - 1, visited, str + c);
+                    }
+                    
+                    if(isSafe(row - 1, column, visited) && boggle[row - 1, column] == c){
+                        SearchWord(root.children[child], boggle, row - 1, column, visited, str + c);
+                    }
+                }
+            }
+            
+            visited[row, column] = false;
+        }
     }
 
     public void FindWord(char[,] boggle, TrieNode root){
+        bool[,] visited = new bool[ROW, COLUMN];
+        TrieNode current = root;
+        String str = "";
 
+        for(int row = 0; row < ROW; row++){
+            for(int column = 0; column < COLUMN; column++){
+                if(current.children[(boggle[row, column] - 'A')] != null){
+                    str = str + boggle[row, column];
+                    SearchWord(current.children[(boggle[row, column] - 'A')], boggle, row, column, visited, str);
+                    str = "";
+                }
+            }
+        }
     }
 }
