@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+// T - O(V + E)
+
 // Iterative BFT of a Binary Search Tree
 public class BreadthFirstTreeTraversal {
     private class Node {
@@ -27,5 +29,51 @@ public class BreadthFirstTreeTraversal {
             if(current.right != null){ queue.Enqueue(current.right); }
         }
     }
+}
 
+// Recursive Breadth First Search
+
+
+// Iterative Breadth First Search of a graph
+public class BreadFirstTraversalGraph {
+    private int vertices;
+    private List<int>[] adjacencyList;
+
+    public BreadFirstTraversalGraph(int vertices){
+        this.vertices = vertices;
+        adjacencyList = new List<int>[vertices];
+        for(int i = 0; i < vertices; i++){
+            adjacencyList[i] = new List<int>();
+        }
+    }
+
+    public void AddEdge(int vertex, int edge){
+        adjacencyList[vertex].Add(edge);
+    }
+
+    public void BreadthFirstSearch(int source){
+        bool[] visited = new bool[vertices];
+        Queue<int> queue = new Queue<int>();
+
+        for(int vertex = 0; vertex < vertices; vertex++){
+            visited[vertex] = false;
+        }
+
+        visited[source] = true;
+        queue.Enqueue(source);
+
+        while(queue.Count != 0){
+            int current = queue.Dequeue();
+            Console.WriteLine(current);
+
+            List<int> adjacentList = adjacencyList[current];
+
+            foreach(int adjacent in adjacentList){
+                if(!visited[adjacencyList]){
+                    visited[adjacent] = true;
+                    queue.Enqueue(adjacent);
+                }
+            }
+        }
+    }
 }
