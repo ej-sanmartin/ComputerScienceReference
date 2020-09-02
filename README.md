@@ -40,7 +40,7 @@ Note that each main.cs file contains the actual classes for the various data str
         * [AVL Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/AVLTree)
 
         * [B Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/BTree)
-        * [Binary Search Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/BTree)
+        * [Binary Search Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/binarySearchTree)
         * [Fenwick Tree](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/fenwickTree)
         * [Max Heap](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/maxHeap)
         * [Min Heap](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/Trees/minHeap)
@@ -106,7 +106,7 @@ Search algorithms are important to study as they usually open up to other import
 
 Search algorithms are also important to study as they are great ways to ease into Big O notation and space and time trade offs. A simple example, Bubble Sort may be incredibly slow but if your software happens to not care about speed and needs to fit into a small file, it could be a good choice. However, if space is not an issue you can go with a faster search algorithm such as Quick Sort.
 
-C# has an Array.Sort method built in which runs a search algorithm based on the partition size of what's to be sorted. A small collection of elements, a partition size of less than 16 elements, will have C# run an Insertion Sort Algorithm. If the partitions exceeds 2 * LogN where N is the range of the input array, C# uses Heapsort. Otherwise, for most instances, C# will run Quick Sort. Note that the worst case time complexity of the Sort Method is O(n Log n) and the sorting is unstable, meaning that if two elements are equal they may not maintain their order with each other.
+C# has an Array.Sort method built in which runs a search algorithm based on the partition size of what's to be sorted. A small collection of elements, a partition size of less than 16 elements, will have C# run an Insertion Sort Algorithm. If the partitions exceeds 2 * LogN where N is the range of the input array, C# uses Heap Sort. Otherwise, for most instances, C# will run Quick Sort. Note that the worst case time complexity of the Sort Method is O(n Log n) and the sorting is unstable, meaning that if two elements are equal they may not maintain their order with each other.
 
 
 ## What is Graph Theory?
@@ -115,7 +115,7 @@ Graph Theory is the study of graphs and how the relationships  between various e
 
 Note that graphs can either be directed or undirected. A directed graph means that edges have a direction to another vertex that it is pointing to, meanwhile an undirected graph is a graph where the edges do not have this property.
 
-Graphs can be represented in many ways but in this repository we focus on Adjacency Matrices and Adjacency Lists. An adjacency matrix is constructed via a 2D array while an Adjacency List can be constructed in many ways, such as a Hash Table with key value pairs of vertex to that vertex's list of edges. An adjacency matrix takes up a lot of space and is typically slower compared to the list but it is easier to implement. Adjacency lists are faster and space efficient but larger data sets can make implementing algorithms more complicated that it should be. It is important to know how to implement both kinds of graphs and when best to use which.
+Graphs can be represented in many ways but in this repository we focus on Adjacency Matrices and Adjacency Lists. An adjacency matrix is constructed via a 2D array while an Adjacency List can be constructed in many ways, such as a Hash Table with key value pairs of vertex to that vertex's list of edges. An adjacency matrix takes up a lot of space and is typically slower compared to the list but it is easier to implement. Adjacency lists are faster and space efficient but larger data sets can make implementing algorithms more complicated that it should be. It is important to know how to implement both kinds of graphs and when best to use them.
 
 Graph theory is a great way to solve many kinds of relational problems and is widely used in software engineering. Some real world applications are constructing the relationships in a social network site, path finding in games or GPS, and garbage collection for programming languages.
 
