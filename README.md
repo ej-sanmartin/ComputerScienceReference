@@ -117,7 +117,7 @@ Note that graphs can either be directed or undirected. A directed graph means th
 
 Graphs can be represented in many ways but in this repository we focus on Adjacency Matrices and Adjacency Lists. An adjacency matrix is constructed via a 2D array while an Adjacency List can be constructed in many ways, such as a Hash Table with key value pairs of vertex to that vertex's list of edges. An adjacency matrix takes up a lot of space and is typically slower compared to the list but it is easier to implement. Adjacency lists are faster and space efficient but larger data sets can make implementing algorithms more complicated that it should be. It is important to know how to implement both kinds of graphs and when best to use which.
 
-Graph theory is a great way to solve many kinds of relational problems and is widely used in software engineering. Some real world applications are to construct the relationships in a social media site, path finding in games or GPS, and garbage collection for programming languages.
+Graph theory is a great way to solve many kinds of relational problems and is widely used in software engineering. Some real world applications are constructing the relationships in a social network site, path finding in games or GPS, and garbage collection for programming languages.
 
 
 
