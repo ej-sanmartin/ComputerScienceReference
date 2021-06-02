@@ -60,7 +60,7 @@ public class QS {
             if(arr[rightIndex] >= arr[pivot]) rightIndex--;
         }
         Swap(arr, pivot, rightIndex);
-        leftSubArrayIsSmaller = rightIndex - 1 - low < high - (rightIndex + 1);
+        bool leftSubArrayIsSmaller = rightIndex - 1 - low < high - (rightIndex + 1);
         if(leftSubArrayIsSmaller){
             QSHelper(arr, low, rightIndex - 1);
             QSHelper(arr, rightIndex + 1, high);
