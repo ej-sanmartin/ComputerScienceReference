@@ -30,3 +30,43 @@ public class QuickSort {
         arr[b] = temporary;
     }
 }
+
+
+/*
+  Another implementation
+*/
+public class QS {
+    public void QS(int[] arr){
+        QSHelper(arr, 0, arr.Length - 1);
+        return arr;
+    }
+    
+    private void Swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+    
+    private void QSHelper(int[] arr, int low, int high){
+        if(low >= high) return;
+        int pivot = low;
+        int leftIndex = low + 1;
+        int rightIndex = high;
+        while(rightIndex >= leftIndex){
+            if(arr[leftIndex] > arr[pivot] && arr[rightIndex] < arr[pivot]){
+                Swap(arr, leftIndex, rightIndex);
+            }
+            if(arr[leftIndex] <= arr[pivot]) leftIndex++;
+            if(arr[rightIndex] >= arr[pivot]) rightIndex--;
+        }
+        Swap(arr, pivot, rightIndex);
+        leftSubArrayIsSmaller = rightIndex - 1 - low < high - (rightIndex + 1);
+        if(leftSubArrayIsSmaller){
+            QSHelper(arr, low, rightIndex - 1);
+            QSHelper(arr, rightIndex + 1, high);
+        } else {
+            QSHelper(arr, rightIndex + 1, high);
+            QSHelper(arr, low, rightIndex - 1);
+        }
+    }
+}
