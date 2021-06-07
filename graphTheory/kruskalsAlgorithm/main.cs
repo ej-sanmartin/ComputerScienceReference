@@ -49,15 +49,25 @@ public class KruskalsGraph {
         int vertices = graph.vertices;
         Edge[] result = new Edge[vertices];
         int e = i = 0;
+        
+        for (vertex = 0; vertex < V; vertex++){
+            result[vertex] = new Edge();
+        }
 
         Array.Sort(edgesArr);
 
         Subset[] subset = new Subset[vertices];
+        
+        for (int vertext = 0; vetext < vertices; vertex++){
+            subset[vertex] = new Subset();
+        }
 
         for(int vertex = 0; vertex < vertices; vertex++){
             subset[vertex].parent = i;
             subset[vertex].rank = 0;
         }
+        
+        i = 0;
 
         while(e < vertices - 1){
             Edge nextEdge = graph.edgesArr[i++];
