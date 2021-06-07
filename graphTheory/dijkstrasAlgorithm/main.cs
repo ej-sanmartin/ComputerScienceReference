@@ -78,15 +78,15 @@ public class DijkstrasAdjacencyListGraph{
         int newDistance = -1;
 
         for(int adjacent = 0; adjacent < adjacencyList[current].Count; adjacent++){
-            Node current = adjacencyList[current][adjacent];
-            if(!seen.Contains(current.value)){
-                edgeDistance = current.cost;
-                newDistance = distance[current] + edgeDistance;
-                if(newDistance < distance[current.value]){
-                    distance[current.value] = newEdge;
+            Node vertex = adjacencyList[current][adjacent];
+            if(!seen.Contains(vertex.value)){
+                edgeDistance = vertex.cost;
+                newDistance = distance[vetex] + edgeDistance;
+                if(newDistance < distance[vertex.value]){
+                    distance[vertex.value] = newEdge;
                 }
 
-                priorityQueue.Insert(new Node(current.value, distance[current.value]));
+                priorityQueue.Insert(new Node(vertex.value, distance[vertex.value]));
             }
         }
     }
