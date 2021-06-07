@@ -21,6 +21,25 @@ public class UnionFindGraph {
         if(parent[i] == -1){ return i; }
         return Find(parent, parent[i]);
     }
+    
+    // Iterative implementation of Union find
+    // second while loop is compression technique
+    // so all items in a union-ed set are pointing at root
+    // for amortalized constant time complexity
+    public int IterativeFind(int[] parent, int i){
+        int root = i;
+        while(root != parent[root]{
+            root = parent[root];
+        }
+              
+        while(i != root){
+            int next = parent[i];
+            parent[i] = root;
+            i = next;
+        }
+        
+        return root;
+    }
 
     public void Union(int[] parent, int x, int y){
         int xSet = Find(parent, x);
@@ -28,7 +47,7 @@ public class UnionFindGraph {
         parent[xSet] = ySet;
     }
 
-    public int isCycle(UnionFindGraph graph){
+    public bool isCycle(UnionFindGraph graph){
         int[] parent = new int[graph.vertices];
 
         for(int vertex = 0; vertex < graph.vertices; vertex++){
@@ -39,10 +58,10 @@ public class UnionFindGraph {
             int x = Find(parent, graph.edgesArr[edge].source);
             int y = Find(parent, graph.edgesArr[edge].destination);
 
-            if(x == y){ return 1; }
+            if(x == y) return true;
             Union(parent, x, y);
         }
 
-        return 0;
+        return false;
     }
 }
