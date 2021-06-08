@@ -120,6 +120,10 @@ Graphs can be represented in many ways but in this repository we focus on Adjace
 Graph theory is a great way to solve many kinds of relational problems and is widely used in software engineering. Some real world applications are constructing the relationships in a social network site, path finding in games or GPS, and garbage collection for programming languages.
 
 
+## Bug Fixes
+- Major one: Search Algorithms Folder incorrectly named. Must be changed to "Sort Algorithms"
+
+
 ## Additional Resources
 * [Research Paper on C# (a good introduction to the language)](http://courses.cs.vt.edu/~cs5314/Lang-Paper-Presentation/Papers/HoldPapers/C-Sharp.pdf)
 
