@@ -35,13 +35,14 @@ public class BinarySearchIterative {
 // otherwise returns -1 if not found
 public class BinarySearchRecursive {
   public static int BinarySearch(int[] arr, int targetValue, int low, int high){
-    if(left > right) return -1;
-    int middle = (left + right) / 2;
+    if(low > high) return -1;
+    int middle = (low + high) / 2;
     if(targetValue == arr[middle]) return middle;
     
     if(targetValue > arr[middle]){
       return BinarySearch(arr, targetValue, middle + 1, high);
     } else {
-      return BinarySearch(arr, targetValue, left, middle - 1):
+      return BinarySearch(arr, targetValue, low, middle - 1);
+    }
   }
 }
