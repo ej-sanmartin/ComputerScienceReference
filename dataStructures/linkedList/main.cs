@@ -116,34 +116,31 @@ public class LinkedList {
 
     // T - O(n)
     public bool Contains(int value){
-        Node slow = head;
-        Node fast = head;
-        
-        while(slow != null && fast != null && fast.nextElement != null){
-            slow = slow.nextElement;
-            fast = fast.nextElement.nextElement;
-            if(slow == fast) return true;
+        if(isEmpty()){
+            return false;
         }
 
+        if(head.value == value){ return true; }
+
+        Node current = head;
+
+        while(current != null){
+            if(current.value == value) return true;
+            current = current.next;
+        }
+        
         return false;
     }
 
     // T - O(n)
     public bool ContainsCycle(){
-        if(isEmpty()){
-            throw new System.InvalidOperationException("Sorry, Linked List empty. Cycle likely not possible.");
-        }
-
-        if(head.next == null){ return false; }
-
         Node slow = head;
         Node fast = head;
-
-        while(fast.next != null && fast != null){
+        
+        while(slow != null && fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
-
-            if(slow == fast){ return true; }
+            if(slow == fast) return true;
         }
 
         return false;
