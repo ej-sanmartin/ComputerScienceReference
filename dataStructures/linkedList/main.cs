@@ -152,4 +152,28 @@ public class LinkedList {
 
         return false;
     }
+    
+    // T - O(n)
+    // S - O(1)/ O(n) in recursive solution
+    public void ReverseIterative(){
+        Node previous = null;
+        Node current = head;
+        Node next = null;
+        
+        while(current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        // if you want to return reversed Linked List, previous will now be new head
+    }
+    
+    public Node ReverseRecursive(Node head){
+        if(head == null || head.next == null) return head;
+        Node reversedListHead = ReverseRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return reversedListHead;
+    }
 }
