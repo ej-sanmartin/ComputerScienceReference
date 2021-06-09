@@ -146,6 +146,27 @@ public class LinkedList {
         return false;
     }
     
+    public int FindMid(){
+        if (IsEmpty()) return 0;
+        
+        Node current = head;
+
+        if (current.next == null) return current.value;
+
+        Node mid = current;
+        current= current.next.next;
+
+        while (current != null){
+            mid = mid.next;
+
+            current = current.next;
+            if (current != null) current = current.next;     // pointing to current's next
+        }
+                                  
+        if (mid != null) return mid.value;
+        return 0;
+    }
+    
     // T - O(n)
     // S - O(1)/ O(n) in recursive solution
     public void ReverseIterative(){
