@@ -166,7 +166,7 @@ public class LinkedList {
             previous = current;
             current = next;
         }
-        // if you want to return reversed Linked List, previous will now be new head
+        head = previous;
     }
     
     public Node ReverseRecursive(Node head){
