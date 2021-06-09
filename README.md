@@ -77,7 +77,7 @@ Note that each main.cs file contains the actual classes for the various data str
     * [Breadth First Traversal](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/breadthFirstTraversal)
     * [Depth First Traversal](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/depthFirstTraversal)
     * [Dijkstra's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/dijkstrasAlgorithm)
-    * [Floyd-Warshall Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/floydWarshall)
+    * [Floyd-Warshall Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/floydWarshallAlgorithm)
     * [Graph (Implementations as Adjacency List and Matrix)](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/graph)
     * [Johnson's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/johnsonsAlgorithm)
     * [Kruskal's Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/kruskalsAlgorithm)
