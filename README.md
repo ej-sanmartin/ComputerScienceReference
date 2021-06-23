@@ -95,7 +95,7 @@ More to come!
 
 Data Structures are essential tools for programmers that help store, organize, and manipulate data. There are many of them and it is important to know when best to use each structure and how they generally work.
 
-Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionary's (which we call Hash Tables in this repository) built in, as well. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built into C#.
+Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionaries (which we call Hash Tables in this repository) built in, as well. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built into C#.
 
 
 ## What are Sorting Algorithms?
