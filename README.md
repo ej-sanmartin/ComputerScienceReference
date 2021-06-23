@@ -130,6 +130,7 @@ Graph theory is a great way to solve many kinds of relational problems and is wi
 * [C# Source Code](https://referencesource.microsoft.com/#System,namespaces)
 * [C# Documentation with Microsoft](https://docs.microsoft.com/en-us/dotnet/csharp/)
 * [Geek For Geeks Website](https://www.geeksforgeeks.org/)
+* [Data Structures and Algorithms: Annotated Reference with Examples](https://apps2.mdp.ac.id/perpustakaan/ebook/Karya%20Umum/Dsa.pdf)
 
 
 ## Contributers
