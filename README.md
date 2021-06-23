@@ -12,7 +12,7 @@
 
 Hello! 
 
-This repository is filled with code implementations of fundamental and some advance data structures, search algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
+This repository is filled with code implementations of fundamental and some advance data structures, sorting algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
 
 Feel free to look over my C# references and don't be shy if you find something wrong, found better ways to do things, or want to contribute to the bettering of this repository. Anything helps and is welcomed!
 
@@ -26,7 +26,7 @@ This repository was originally written in my notebook while I was studying for c
 ## Organization
 
 
-This reference is divided into three folders: data structure, search algorithm, and graph theory. Within those folders, there are sub folders for each individual concept. This is so we can add implementations in other languages, extra files for testing or general notes.
+This reference is divided into four folders: data structure, sorting algorithm, graph theory, and miscellaneous algorithms. Within those folders, there are sub folders for each individual concept. This is so we can add implementations in other languages, extra files for testing or general notes.
 
 Note that each main.cs file contains the actual classes for the various data structures and algorithms but they do not contain Main functions. You may clone or test these files on your own, although in the future I may add my own tests and Main functions in this repository in the future to better help those using this as a resource.
 
@@ -56,7 +56,7 @@ Note that each main.cs file contains the actual classes for the various data str
     * [Queue](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/queue)
     * [Stack](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/stack)
 
-* [Search Algorithms](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms)
+* [Sorting Algorithms](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms)
     * [Bubble Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bubbleSort)
 
     * [Bucket Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bucketSort)
@@ -98,15 +98,15 @@ Data Structures are essential tools for programmers that help store, organize, a
 Most programming languages have data structures built into their languages and could be called without having to construct a class yourself. Commonly, arrays are built into most languages and C# has classes for Stacks, Queues, and Dictionary's (which we call Hash Tables in this repository) already built in. However, you can construct your own variants of these data structures or, for data structures such as Priority Queues and Tries, you would have to create your own implementation for structures not already built into C#.
 
 
-## What are Search Algorithms?
+## What are Sorting Algorithms?
 
-Search algorithms are self explanatory: they are algorithms which serve to sort a collection of data. There are many types of search algorithms, some fast (Quick Sort) and others terribly slow (Bubble Sort), and some space intensive and some not. [Here](https://www.youtube.com/watch?v=kPRA0W1kECg) is a neat video of common search algorithms visualized.
+Sorting algorithms are self explanatory: they are algorithms which serve to sort a collection of data. There are many types of sorting algorithms, some fast (Quick Sort) and others terribly slow (Bubble Sort), and some space intensive and some not. [Here](https://www.youtube.com/watch?v=kPRA0W1kECg) is a neat video of common sort algorithms visualized.
 
-Search algorithms are important to study as they usually open up to other important programming concepts, such as heapifying with Heap Sort and recursion and divide and conquer with Merge Sort.
+Sorting algorithms are important to study as they usually open up to other important programming concepts, such as heapifying with Heap Sort and recursion and divide and conquer with Merge Sort.
 
-Search algorithms are also important to study as they are great ways to ease into Big O notation and space and time trade offs. A simple example, Bubble Sort may be incredibly slow but if your software happens to not care about speed and needs to fit into a small file, it could be a good choice. However, if space is not an issue you can go with a faster search algorithm such as Quick Sort.
+Sorting algorithms are also important to study as they are great ways to ease into Big O notation and space and time trade offs. An example, Bubble Sort may be incredibly slow but if your software happens to not care about speed and needs to fit into a small file and you prefer a simple sorting implementation, it could be a good choice. However, if space is not an issue you can go with a faster sort algorithm such as Merge Sort.
 
-C# has an Array.Sort method built in which runs a search algorithm based on the partition size of what's to be sorted. A small collection of elements, a partition size of less than 16 elements, will have C# run an Insertion Sort Algorithm. If the partitions exceeds 2 * LogN where N is the range of the input array, C# uses Heap Sort. Otherwise, for most instances, C# will run Quick Sort. Note that the worst case time complexity of the Sort Method is O(n Log n) and the sorting is unstable, meaning that if two elements are equal they may not maintain their order with each other.
+C# has an Array.Sort method built in which runs a sorting algorithm based on the partition size of what's to be sorted. A small collection of elements, a partition size of less than 16 elements, will have C# run an Insertion Sort Algorithm. If the partitions exceeds 2 * LogN where N is the range of the input array, C# uses Heap Sort. Otherwise, for most instances, C# will run Quick Sort. Note that the worst case time complexity of the Sort Method is O(n Log n) and the sorting is unstable, meaning that if two elements are equal they may not maintain their order with each other.
 
 
 ## What is Graph Theory?
@@ -121,7 +121,7 @@ Graph theory is a great way to solve many kinds of relational problems and is wi
 
 
 ## Bug Fixes
-- Major one: Search Algorithms Folder incorrectly named. Must be changed to "Sort Algorithms"
+- Major one: Search Algorithms Folder incorrectly named. Must be changed to "Sort Algorithms" and all links must point to renamed folder
 
 
 ## Additional Resources
