@@ -134,7 +134,8 @@ Graph theory is a great way to solve many kinds of relational problems and is wi
 * [Geek For Geeks Website](https://www.geeksforgeeks.org/)
 * [Data Structures and Algorithms: Annotated Reference with Examples](https://apps2.mdp.ac.id/perpustakaan/ebook/Karya%20Umum/Dsa.pdf)
 * [Educative's Data Structures for Coding Interviews in C#](https://www.educative.io/courses/data-structures-interviews-cs)
-* [The Coding Interview Bootcamp: Algorithms + Data Structures by Stephen Grider](https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/)
+* [Udemy: Data Structures and Algorithm Bootcamp](https://www.udemy.com/course/data-structures-and-algorithms-bootcamp)
+* [C# Time Complexity of Generics](http://c-sharp-snippets.blogspot.com/2010/03/runtime-complexity-of-net-generic.html)
 
 
 ## Contributers
