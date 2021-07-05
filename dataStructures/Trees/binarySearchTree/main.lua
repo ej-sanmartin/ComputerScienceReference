@@ -65,6 +65,10 @@ function BinarySearchTree:findNodeMin(node)
   return BinarySearchTree:findNodeMin(node.left)
 end
 
+function BinarySearchTree:findTreeMax()
+  return BinarySearchTree:findNodeMax(self.__root)
+end
+
 function BinarySearchTree:findNodeMax(node)
   if node.right == nil then
     return node
