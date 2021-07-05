@@ -122,10 +122,12 @@ function BinarySearchTree:remove(value)
   local afterRemoval = self:contains(value)
   
   --[[
-    If contains function are different before and after,
+    If contains outputs are different before and after this method,
     indicates change in tree which we can infer was from deletion.
-    If they are the same, then that means that deletion did
+    If the outputs are the same, then we can infer that deletion did
     not happen because the node was not even there to begind with.
+  
+    Need to know this to accurately update count of tree
   ]]
   if beforeRemoval ~= afterRemoval then
     self.__count = self.__count - 1
