@@ -217,17 +217,17 @@ end
 
 -- O(n), where n is the number of nodes in the tree
 function BinarySearchTree:printTree()
-  BinarySearchTree:printTreeHelper("", self.__root, false)
+  BinarySearchTree:printTreeHelper("", self.__root)
 end
 
-function BinarySearchTree:printTreeHelper(prefix, root, isLeft)
+function BinarySearchTree:printTreeHelper(prefix, root)
   if root == nil then
     return
   end
 
-  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.right, false)
+  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.right)
   print(string.format("%s %d", prefix .. "|--", root.value))
-  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.left, true)
+  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.left)
 end
 
 -- Test out your code in the main function below!
