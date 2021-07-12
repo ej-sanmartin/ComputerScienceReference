@@ -1,76 +1,83 @@
-using String;
+using System;
 using System.Collections.Generic;
 
-// S - O(word * nodes)
 public class Trie {
-    private class Node {
-        public Dictionary<char, Node> children;
-        public bool endOfWord;
-        public Node(){
-            children = new Dictionary<char, Node>();
-            endOfWord = false;
-        }
+  private Node root;
+
+  class Node {
+    public Dictionary<char, Node> children;
+    public bool IsEndWord;
+    public Node(){
+      children = new Dictionary<char, Node>();
+      IsEndWord = false;
+    }
+  }
+
+  public Trie(){
+    root = new Node();
+  }
+
+  public void confirm(){
+    Console.WriteLine("Trie Initialize");
+  }
+
+  public void Insert(string word){
+    InsertHelper(root, word, 0);
+  }
+
+  private void InsertHelper(Node root, string word, int index){
+    if(index == word.Length){
+      root.IsEndWord = true;
+      return;
     }
 
-    private Node root;
-    public Trie(){ root = new Node(); }
-
-    // T - O(l), length of word
-    public bool Find(String word){ return FindHelper(root, word, 0); }
-
-    private bool FindHelper(Node current, String word, int index){
-        if(index == word.Length){ return current.endOfWord; }
-
-        char c = word[index];
-        Node node = current.children[c];
-        
-        if(node == null){ return false; }
-
-        return FindHelper(node, word, index++);
+    char c = word[index];
+    if(!root.children.ContainsKey(c)){
+      Node node = new Node();
+      root.children.Add(c, node);
     }
 
-    // T - O(l), length of word
-    public void Insert(String word){ InsertHelper(root, word, 0); }
+    InsertHelper(root.children[c], word, index + 1);
+  }
 
-    private void InsertHelper(Node current, String word, int index){
-        if(index == word.Length){
-            current.endOfWord = true;
-            return;
-        }
+  public bool Find(string word){
+    return FindHelper(root, word, 0);
+  }
 
-        char c = word[index];
-        Node node = current.children[c];
+  private bool FindHelper(Node root, string word, int index){
+    if(index == word.Length) return root.IsEndWord;
 
-        if(node == null){
-            node = new Node();
-            current.children.Add(c, node);
-        }
-
-        InsertHelper(current, word, index++);
+    char c = word[index];
+    if(!root.children.ContainsKey(c)){
+      return false;
     }
 
-    // T - O(l), length of word
-    public void Delete(String word){ DeleteHelper(root, word, 0); }
+    return FindHelper(root.children[c], word, index + 1);
+  }
 
-    private bool DeleteHelper(Node current, String word, int index){
-        if(index == word.Length){
-            if(!current.endOfWord){ return false; }
-            current.endOfWord = false;
-            return current.children.Count == 0;
-        }
+  public void Delete(string word){
+    DeleteHelper(root, word, 0);
+  }
 
-        char c = word[index];
-        Node node = current.children[c];
-
-        if(node == null){ return false; }
-
-        bool shouldDeleteCurrentNode = DeleteHelper(node, word, index++);
-
-        if(shouldDeleteCurrentNode){
-            current.children.Remove(c);
-            return current.children.Count == 0;
-        }
-
-        return false;
+  private bool DeleteHelper(Node root, string word, int index){
+    if(index == word.Length){
+      if(root.IsEndWord == false) return false;
+      root.IsEndWord = false;
+      return root.children.Count == 0;
     }
+
+    char c = word[index];
+    if(!root.children.ContainsKey(c)){
+      return false;
+    }
+
+    bool shouldDeleteCurrentWord = DeleteHelper(root.children[c], word, index + 1);
+
+    if(shouldDeleteCurrentWord){
+      root.children.Remove(c);
+      return root.children.Count == 0;
+    }
+
+    return false;
+  }
 }
