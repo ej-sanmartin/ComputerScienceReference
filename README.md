@@ -31,6 +31,13 @@ This reference is divided into four folders: data structure, sorting algorithm, 
 Note that each main.cs file contains the actual classes for the various data structures and algorithms but they do not contain Main functions. You may clone or test these files on your own, although in the future I may add my own tests and Main functions in this repository in the future to better help those using this as a resource.
 
 
+## Supported Languages
+
+
+* C#
+* Lua
+* More to come...
+
 
 ## Contents
 
