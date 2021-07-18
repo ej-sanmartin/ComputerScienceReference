@@ -301,7 +301,7 @@ end
 
 -- T - O(n), where n is the number of nodes in the Doubly Linked List
 function DoublyLinkedList:removeDuplicates()
-  if self.__count == 0 then
+  if self.__count < 2 then
     return false
   end
 
