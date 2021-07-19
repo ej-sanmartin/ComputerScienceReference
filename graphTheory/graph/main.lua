@@ -4,14 +4,14 @@
 ]]
 local linkedList = require("linkedlist")
 
--- Non weighted graph representation
+-- Non weighted, undirected graph representation
 -- To have weighted graph, need to update Node class to have weighted values
 local AdjacencyListGraph = {}
 AdjacencyListGraph.__index = AdjacencyListGraph
 
 function AdjacencyListGraph.new()
   local self = setmetatable({}, AdjacencyListGraph)
-  
+
   self.__vertexList = {}
   self.__adjacencyList = {}
   self.__count = 0
@@ -62,7 +62,7 @@ function AdjacencyListGraph:addEdge(start, destination)
   end
 
   startVertex:addFront(destination)
-  destinationVertex:addFront(start)
+  destinationVertex:addFront(start) -- remove this line to make graph directed
 end
 
 function AdjacencyListGraph:removeEdge(start, destination)
@@ -83,6 +83,7 @@ function AdjacencyListGraph:removeEdge(start, destination)
     io.write("Destination vertex not found in start vertex\n")
   end
 
+  -- remove this if block to make graph directed
   if destinationVertex:removeAValue(start) == false then
     io.write("Start vertex not found in destination vertex\n")
   end
@@ -98,7 +99,7 @@ function AdjacencyListGraph:printGraph()
   io.write("\n")
 end
 
--- Non weighted graph implementation
+-- Non weighted, undirected graph implementation
 local AdjacencyMatrixGraph = {}
 AdjacencyMatrixGraph.__index = AdjacencyMatrixGraph
 
@@ -132,12 +133,12 @@ end
 
 function AdjacencyMatrixGraph:addEdge(start, destination)
   self.__adjacencyMatrix[start][destination] = 1
-  self.__adjacencyMatrix[destination][start] = 1
+  self.__adjacencyMatrix[destination][start] = 1 -- remove this line to make graph directed
 end
 
 function AdjacencyMatrixGraph:removeEdge(start, destination)
   self.__adjacencyMatrix[start][destination] = 0
-  self.__adjacencyMatrix[destination][start] = 0
+  self.__adjacencyMatrix[destination][start] = 0 -- remove this line to make graph directed
 end
 
 function AdjacencyMatrixGraph:printGraph()
@@ -153,8 +154,13 @@ end
 -- Test out your code in the Main function below
 local function Main()
   local graph = AdjacencyListGraph.new()
-  local matrix = AdjacencyMatrixGraph.new(--[[pass number of vertices here]])
+  --local matrix = AdjacencyMatrixGraph.new(--[[pass number of vertices here]])
 
 end
 
 Main()
+
+return {
+  AdjacencyListGraph = AdjacencyListGraph,
+  AdjacencyMatrixGraph = AdjacencyMatrixGraph
+}
