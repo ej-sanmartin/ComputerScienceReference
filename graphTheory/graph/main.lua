@@ -2,7 +2,7 @@
   Edges kept tracked via Linked List. Refer to Linked List file
   for implementation details
 ]]
-linkedList = require("linkedlist")
+local linkedList = require("linkedlist")
 
 -- Non weighted graph representation
 -- To have weighted graph, need to update Node class to have weighted values
