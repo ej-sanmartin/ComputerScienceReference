@@ -5,7 +5,7 @@ function Node.new(value)
   local self = setmetatable({}, Node)
 
   self.value = value
-  self.nextNode = nill
+  self.nextNode = nil
 
   return self
 end
@@ -227,7 +227,6 @@ function LinkedList:printLinkedList()
     io.write(string.format("(%d)->", current.value))
     current = current.nextNode
   end
-  
   io.write("nil")
 end
 
@@ -246,9 +245,12 @@ function LinkedList:toArray()
   return arr
 end
 
--- Test out your code within Main function
+-- Test out your code in the Main function below!
 local function Main()
-  local linkedList = LinkedList:new()
+  local ll = LinkedList.new()
+
 end
 
 Main()
+
+return LinkedList
