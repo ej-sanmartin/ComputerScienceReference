@@ -54,7 +54,7 @@ function BinarySearchTree:clear()
 end
 
 function BinarySearchTree:findTreeMin()
-  return BinarySearchTree:findNodeMin(self.__root)
+  return self:findNodeMin(self.__root)
 end
 
 function BinarySearchTree:findNodeMin(node)
@@ -62,11 +62,11 @@ function BinarySearchTree:findNodeMin(node)
     return node
   end
 
-  return BinarySearchTree:findNodeMin(node.left)
+  return self:findNodeMin(node.left)
 end
 
 function BinarySearchTree:findTreeMax()
-  return BinarySearchTree:findNodeMax(self.__root)
+  return self:findNodeMax(self.__root)
 end
 
 function BinarySearchTree:findNodeMax(node)
@@ -74,7 +74,7 @@ function BinarySearchTree:findNodeMax(node)
     return node
   end
 
-  return BinarySearchTree:findNodeMax(node.right)
+  return self:findNodeMax(node.right)
 end
 
 function BinarySearchTree:insert(value)
@@ -83,7 +83,7 @@ function BinarySearchTree:insert(value)
     return
   end
 
-  self.__root = BinarySearchTree:insertHelper(self.__root, value)
+  self.__root = self:insertHelper(self.__root, value)
   self.__count = self.__count + 1
 end
 
@@ -103,7 +103,7 @@ function BinarySearchTree:insertHelper(root, value)
 end 
 
 function BinarySearchTree:contains(value)
-  return BinarySearchTree:containsHelper(self.__root, value)
+  return self:containsHelper(self.__root, value)
 end
 
 function BinarySearchTree:containsHelper(root, value)
@@ -114,24 +114,22 @@ function BinarySearchTree:containsHelper(root, value)
   if root.value == value then
     return true
   elseif root.value > value then
-    return BinarySearchTree:containsHelper(root.left, value)
+    return self:containsHelper(root.left, value)
   else
-    return BinarySearchTree:containsHelper(root.right, value)
+    return self:containsHelper(root.right, value)
   end
 end
 
 function BinarySearchTree:remove(value)
   local beforeRemoval = self:contains(value)
-  self.__root = BinarySearchTree:removeHelper(self.__root, value)
+  self.__root = self:removeHelper(self.__root, value)
   local afterRemoval = self:contains(value)
   
   --[[
-    If contains outputs are different before and after this method,
+    If contains function are different before and after,
     indicates change in tree which we can infer was from deletion.
-    If the outputs are the same, then we can infer that deletion did
+    If they are the same, then that means that deletion did
     not happen because the node was not even there to begind with.
-  
-    Need to know this to accurately update count of tree
   ]]
   if beforeRemoval ~= afterRemoval then
     self.__count = self.__count - 1
@@ -142,9 +140,9 @@ function BinarySearchTree:removeHelper(root, value)
   if root == nil then
     return nil
   elseif root.value > value then
-    root.left = BinarySearchTree:removeHelper(root.left, value)
+    root.left = self:removeHelper(root.left, value)
   elseif root.value < value then
-    root.right = BinarySearchTree:removeHelper(root.right, value)
+    root.right = self:removeHelper(root.right, value)
   else
     if root.left == nil and root.right == nil then
       root = nil
@@ -153,9 +151,9 @@ function BinarySearchTree:removeHelper(root, value)
     elseif root.right == nil then
       root = root.left
     else
-      local minimumNodeOnRight = BinarySearchTree:findNodeMin(root.right)
+      local minimumNodeOnRight = self:findNodeMin(root.right)
       root.value = minimumNodeOnRight.value
-      root.right = BinarySearchTree:removeHelper(root.right, root.value)
+      root.right = self:removeHelper(root.right, root.value)
     end
   end
 
@@ -166,7 +164,7 @@ end
 -- S - O(h), where space is dependent on height which effects
 --           the recursive call stack
 function BinarySearchTree:inorderTraversal()
-  BinarySearchTree:inorderTraversalHelper(self.__root)
+  self:inorderTraversalHelper(self.__root)
   io.write("\n")
 end
 
@@ -174,16 +172,16 @@ function BinarySearchTree:inorderTraversalHelper(root)
   if root == nil then
     return
   end
-  BinarySearchTree:inorderTraversalHelper(root.left)
+  self:inorderTraversalHelper(root.left)
   io.write(root.value .. " ")
-  BinarySearchTree:inorderTraversalHelper(root.right)
+  self:inorderTraversalHelper(root.right)
 end
 
 -- T - O(n), where n is the number of nodes in the tree.
 -- S - O(h), where space is dependent on height which effects
 --           the recursive call stack
 function BinarySearchTree:preorderTraversal()
-  BinarySearchTree:preorderTraversalHelper(self.__root)
+  self:preorderTraversalHelper(self.__root)
   io.write("\n")
 end
 
@@ -193,15 +191,15 @@ function BinarySearchTree:preorderTraversalHelper(root)
   end
 
   io.write(root.value .. " ")
-  BinarySearchTree:preorderTraversalHelper(root.left)
-  BinarySearchTree:preorderTraversalHelper(root.right)
+  self:preorderTraversalHelper(root.left)
+  self:preorderTraversalHelper(root.right)
 end
 
 -- T - O(n), where n is the number of nodes in the tree.
 -- S - O(h), where space is dependent on height which effects
 --           the recursive call stack
 function BinarySearchTree:postorderTraversal()
-  BinarySearchTree:postorderTraversalHelper(self.__root)
+  self:postorderTraversalHelper(self.__root)
   io.write("\n")
 end
 
@@ -210,30 +208,32 @@ function BinarySearchTree:postorderTraversalHelper(root)
     return
   end
 
-  BinarySearchTree:postorderTraversalHelper(root.left)
-  BinarySearchTree:postorderTraversalHelper(root.right)
+  self:postorderTraversalHelper(root.left)
+  self:postorderTraversalHelper(root.right)
   io.write(root.value .. " ")
 end
 
 -- O(n), where n is the number of nodes in the tree
 function BinarySearchTree:printTree()
-  BinarySearchTree:printTreeHelper("", self.__root)
+  self:printTreeHelper("", self.__root)
 end
 
-function BinarySearchTree:printTreeHelper(prefix, root)
+function BinarySearchTree:printTreeHelper(prefix, root, isLeft)
   if root == nil then
     return
   end
 
-  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.right)
+  self:printTreeHelper(prefix .. "\t\t", root.right)
   print(string.format("%s %d", prefix .. "|--", root.value))
-  BinarySearchTree:printTreeHelper(prefix .. "\t\t", root.left)
+  self:printTreeHelper(prefix .. "\t\t", root.left)
 end
 
 -- Test out your code in the main function below!
 local function Main()
   local tree = BinarySearchTree.new()
-  
+
 end
 
 Main()
+
+return BinarySearchTree
