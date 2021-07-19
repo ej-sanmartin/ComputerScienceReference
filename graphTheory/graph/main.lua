@@ -53,6 +53,14 @@ function AdjacencyListGraph:addEdge(start, destination)
     destinationVertex = self:addVertex(destination)
   end
 
+  if
+    startVertex:contains(destination)
+    or destinationVertex:contains(start)
+  then
+    io.write("Edge already exists\n\n")
+    return
+  end
+
   startVertex:addFront(destination)
   destinationVertex:addFront(start)
 end
@@ -95,6 +103,11 @@ local AdjacencyMatrixGraph = {}
 AdjacencyMatrixGraph.__index = AdjacencyMatrixGraph
 
 function AdjacencyMatrixGraph.new(vertices)
+  if vertices < 0 then
+    io.write("Matrix cannot have 0 or negative vertices")
+    return nil
+  end
+
   local self = setmetatable({}, AdjacencyMatrixGraph)
 
   self.__vertices = vertices
