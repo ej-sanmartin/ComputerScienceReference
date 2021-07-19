@@ -1,4 +1,4 @@
-Node = {}
+local Node = {}
 Node.__index = Node
 
 function Node.new(value)
@@ -11,7 +11,7 @@ function Node.new(value)
   return self
 end
 
-DoublyLinkedList = {}
+local DoublyLinkedList = {}
 DoublyLinkedList.__index = DoublyLinkedList
 
 function DoublyLinkedList.new()
@@ -301,7 +301,7 @@ end
 
 -- T - O(n), where n is the number of nodes in the Doubly Linked List
 function DoublyLinkedList:removeDuplicates()
-  if self.__count < 2 then
+  if self.__count == 0 then
     return false
   end
 
@@ -419,3 +419,5 @@ local function Main()
 end
 
 Main()
+
+return DoublyLinkedList
