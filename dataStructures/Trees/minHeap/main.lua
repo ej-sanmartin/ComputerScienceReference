@@ -35,11 +35,11 @@ function MinHeap:hasParent(childIndex)
 end
 
 function MinHeap:getLeftChild(parentIndex)
-  return self.__heap[self:leftChildIndex(parentIndex)]
+  return self.__heap[MinHeap:leftChildIndex(parentIndex)]
 end
 
 function MinHeap:getRightChild(parentIndex)
-  return self.__heap[self:rightChildIndex(parentIndex)]
+  return self.__heap[MinHeap:rightChildIndex(parentIndex)]
 end
 
 function MinHeap:getParent(childIndex)
@@ -138,7 +138,10 @@ end
 -- Test out your code in the main function below!
 function Main()
   local pq = MinHeap.new()
-
+  pq:insert(5)
+  print(pq:extractMin())
 end
 
 Main()
+
+return MinHeap
