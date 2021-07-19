@@ -117,3 +117,5 @@ function Main()
 end
 
 Main()
+
+return Trie
