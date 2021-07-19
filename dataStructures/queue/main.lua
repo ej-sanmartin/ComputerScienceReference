@@ -1,4 +1,4 @@
-Node = {}
+local Node = {}
 Node.__index = Node
 
 function Node.new(value)
@@ -10,7 +10,7 @@ function Node.new(value)
   return self
 end
 
-Queue = {}
+local Queue = {}
 Queue.__index = Queue
 
 function Queue.new()
