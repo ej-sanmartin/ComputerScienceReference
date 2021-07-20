@@ -104,7 +104,7 @@ local AdjacencyMatrixGraph = {}
 AdjacencyMatrixGraph.__index = AdjacencyMatrixGraph
 
 function AdjacencyMatrixGraph.new(vertices)
-  if vertices < 0 then
+  if vertices <= 0 then
     io.write("Matrix cannot have 0 or negative vertices")
     return nil
   end
@@ -132,11 +132,27 @@ function AdjacencyMatrixGraph:getGraph()
 end
 
 function AdjacencyMatrixGraph:addEdge(start, destination)
+  if 
+    start > self.__vertices
+    or destination > self.__vertices
+  then
+    io.write("ERROR: One or both vertices do not exist\n\n")
+    return
+  end
+
   self.__adjacencyMatrix[start][destination] = 1
   self.__adjacencyMatrix[destination][start] = 1 -- remove this line to make graph directed
 end
 
 function AdjacencyMatrixGraph:removeEdge(start, destination)
+  if 
+    start > self.__vertices
+    or destination > self.__vertices
+  then
+    io.write("ERROR: One or both vertices do not exist\n\n")
+    return
+  end
+
   self.__adjacencyMatrix[start][destination] = 0
   self.__adjacencyMatrix[destination][start] = 0 -- remove this line to make graph directed
 end
