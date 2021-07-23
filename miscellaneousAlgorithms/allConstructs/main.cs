@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generics;
 
-
 /*
   Given a target string and an array of string, return a list of all possible ways
   that the target string can be constructed by concatenating elements from the array
