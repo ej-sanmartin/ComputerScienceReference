@@ -4,6 +4,100 @@
 ]]
 local linkedList = require("linkedlist")
 
+--[[
+  Weighted Graph with updated LinkedList that uses Edges,
+  having source and destination and weight values, as Nodes
+]]
+local Edge = {}
+Edge.__index = Edge
+
+function Edge.new(start, destination, weight)
+  local self = setmetatable({}, Edge)
+
+  self.start = start
+  self.destination = destination
+  self.weight = weight
+  self.next = nil
+
+  return self
+end
+
+-- Note, does not include remove node method which is needed to remove edge
+local EdgesLinkedList = {}
+EdgesLinkedList.__index = EdgesLinkedList
+
+function EdgesLinkedList.new()
+  local self = setmetatable({}, EdgesLinkedList)
+
+  self.__head = nil
+  self.__count = 0
+
+  return self
+end
+
+function EdgesLinkedList:count()
+  return self.__count
+end
+
+function EdgesLinkedList:getHead()
+  return self.__head
+end
+
+function EdgesLinkedList:addFront(edge)
+  if self.__count == 0 then
+    self.__head = edge
+    self.__count = self.__count + 1
+  else
+    edge.next = self.__head
+    self.__head = edge
+    self.__count = self.__count + 1
+  end
+end
+
+local WeightedDirectedAdjacencyList = {}
+WeightedDirectedAdjacencyList.__index = WeightedDirectedAdjacencyList
+
+function WeightedDirectedAdjacencyList.new(vertices)
+  local self = setmetatable({}, WeightedDirectedAdjacencyList)
+
+  self.__vertices = vertices
+  self.__adjacencyList = {}
+  for i = 1, vertices do
+    self.__adjacencyList[i] = EdgesLinkedList.new()
+  end
+
+  return self
+end
+
+function WeightedDirectedAdjacencyList:count()
+  return self.__vertices
+end
+
+function WeightedDirectedAdjacencyList:getGraph()
+  return self.__adjacencyList
+end
+
+function WeightedDirectedAdjacencyList:addEdge(source, destination, weight)
+  if source < 1 or destination > self.__vertices then
+    io.write("WARNING: Vertex does not exist to add an edge to or from\n\n")
+    return
+  end
+
+  local edge = Edge.new(source, destination, weight)
+  self.__adjacencyList[source]:addFront(edge)
+end
+
+function WeightedDirectedAdjacencyList:printGraph()
+  for i = 1, self.__vertices do
+    local edge = self.__adjacencyList[i]:getHead()
+    while edge ~= nil do
+      io.write(string.format("Vertex %d is connected to vertex %d with weight %d\n", i, edge.destination, edge.weight))
+      edge = edge.next
+    end
+  end
+  io.write("\n")
+end
+
 -- Non weighted, undirected graph representation
 -- To have weighted graph, need to update Node class to have weighted values
 local AdjacencyListGraph = {}
@@ -169,14 +263,17 @@ end
 
 -- Test out your code in the Main function below
 local function Main()
-  local graph = AdjacencyListGraph.new()
-  --local matrix = AdjacencyMatrixGraph.new(--[[pass number of vertices here]])
+  -- local graph = AdjacencyListGraph.new()
+  -- local matrix = AdjacencyMatrixGraph.new(--[[pass number of vertices here]])
+  local graph = WeightedDirectedAdjacencyList.new(5)
 
 end
 
 Main()
 
 return {
+  Edge = Edge,
   AdjacencyListGraph = AdjacencyListGraph,
-  AdjacencyMatrixGraph = AdjacencyMatrixGraph
+  AdjacencyMatrixGraph = AdjacencyMatrixGraph,
+  WeightedDirectedAdjacencyList = WeightedDirectedAdjacencyList
 }
