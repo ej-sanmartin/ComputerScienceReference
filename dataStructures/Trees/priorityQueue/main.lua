@@ -100,29 +100,23 @@ end
 
 function MinPriorityQueue:pop()
   if self.__size == 0 then
-    io.write("Priority Queue is is empty, returning nil")
+    io.write("Priority Queue is empty, returning nil\n")
     return nil
   end
 
   self.__itemIndexes[self.__heap[1].value] = nil
-
-  if self.__size == 1 then
-    self.__size = 0
-    return self.__heap[1]
-  end
-
   local data = self.__heap[1]
   self.__heap[1] = self.__heap[self.__size]
-  self.__itemIndexes[self.__heap[self.__size]] = 1
+  self.__itemIndexes[self.__heap[1].value] = 1
+  self:heapify(1)
   self.__heap[self.__size] = nil
   self.__size = self.__size - 1
-  self:heapify(1)
   return data
 end
 
 function MinPriorityQueue:push(item)
   if self:contains(item) then
-    io.write("Can't push duplicate item onto priority queue\n")
+    self:changeKeyValue(item.value, item.weight)
     return
   end
 
@@ -160,7 +154,7 @@ end
 function MinPriorityQueue:changeKeyValue(item, newKey)
   local index = self.__itemIndexes[item]
   if index == nil then
-    io.write("Item not found in heap")
+    io.write("Item not found in heap\n")
     return
   end
 
@@ -266,24 +260,18 @@ function MaxPriorityQueue:pop()
   end
 
   self.__itemIndexes[self.__heap[1].value] = nil
-
-  if self.__size == 1 then
-    self.__size = 0
-    return self.__heap[1]
-  end
-
   local data = self.__heap[1]
   self.__heap[1] = self.__heap[self.__size]
-  self.__itemIndexes[self.__heap[self.__size]] = 1
+  self.__itemIndexes[self.__heap[1].value] = 1
+  self:heapify(1)
   self.__heap[self.__size] = nil
   self.__size = self.__size - 1
-  self:heapify(1)
   return data
 end
 
 function MaxPriorityQueue:push(item)
   if self:contains(item) then
-    io.write("Can't push duplicate item onto priority queue")
+    self:changeKeyValue(item.value, item.weight)
     return
   end
 
@@ -293,7 +281,7 @@ function MaxPriorityQueue:push(item)
   self.__itemIndexes[item.value] = current
 
   while
-    current ~= 1
+    current <= 1
     and self.__heap[current].weight < self.__heap[self:parentIndex(current)].weight
   do
     self:swap(current, self:parentIndex(current))
@@ -310,7 +298,7 @@ end
 function MaxPriorityQueue:decreaseKey(index, newKey)
   self.__heap[index].weight = newKey
   while
-    index ~= 1
+    index <= 1
     and self.__heap[index].weight > self.__heap[self:parentIndex(index)].weight
   do
     self:swap(index, self:parentIndex(index))
