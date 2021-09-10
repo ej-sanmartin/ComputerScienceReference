@@ -7,6 +7,7 @@ class OptimizedUnion {
   // O(n)
   public OptimizedUnion(int vertices){
     root = new int[vertices];
+    rank = new int[verties];
     for(int i = 0; i < vertices; i++){
       root[i] = i;
       rank[i] = 1;
