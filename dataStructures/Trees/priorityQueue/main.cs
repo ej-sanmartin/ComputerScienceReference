@@ -23,9 +23,11 @@ public class PriorityQueue {
         heap[position] = value;
 
         // HeapifyUp
-        while(position > 0){
+        while (position > 0) {
             int parent = (position + 1)/2 - 1;
-            if(heap[parent] >= heap[position]){ break; }
+            if (heap[parent] >= heap[position]) {
+                break;
+            }
             Swap(parent, position);
             position = parent;
         }
@@ -35,7 +37,9 @@ public class PriorityQueue {
 
     // T - O(logn)
     public int Pop(){
-        if(size == 0){ throw new System.InvalidOperationException("Priority Queue is empty, nothing to pop"); }
+        if (size == 0) {
+            throw new System.InvalidOperationException("Priority Queue is empty, nothing to pop");
+        }
 
         int data = heap[0];
         heap[0] = heap[size - 1];
@@ -43,17 +47,21 @@ public class PriorityQueue {
         size--;
 
         // HeapifyDown
-        while(position < (size/2)){
+        while (position < (size/2)) {
             int leftChild = position * 2 + 1;
             int rightChild = leftChild + 1;
 
-            if(rightChild < size && heap[leftChild] < heap[rightChild]){
-                if(heap[position] >= heap[rightChild]){ break; }
+            if (rightChild < size && heap[leftChild] < heap[rightChild]) {
+                if (heap[position] >= heap[rightChild]) {
+                    break;
+                }
 
                 Swap(position, rightChild);
                 position = rightChild;
             } else {
-                if(heap[position] >= heap[leftChild]){ break; }
+                if (heap[position] >= heap[leftChild]) {
+                    break;
+                }
 
                 Swap(position, leftChild);
                 position = leftChild;
@@ -100,19 +108,29 @@ public class PQ {
         int right = rightChild(key);
         int smallest = key;
         
-        if(left < size && minHeap[left] < minHeap[smallest]) smallest = left;
-        if(right < size && minHeap[right] < minHeap[smallest]) smallest = right;
-        if(smallest != key){
+        if (left < size
+            && minHeap[left] < minHeap[smallest]) {
+            smallest = left;
+        }
+        if (right < size
+            && minHeap[right] < minHeap[smallest]) {
+            smallest = right;
+        }
+        if (smallest != key) {
             Swap(key, smallest);
             MinHeapify(smallest);
         }
     }
     
-    public int getMin() return minHeap[0];
+    public int getMin(){
+        return minHeap[0];
+    }
      
     public int extractMin(){
-        if(size == 0) return int.MaxValue;
-        if(size == 1){
+        if(size == 0) {
+            return int.MaxValue;
+        }
+        if(size == 1) {
             size--;
             return minHeap[0];
         }
@@ -124,13 +142,16 @@ public class PQ {
     }
               
     public bool insertKey(int key){
-        if(size == capacity) return false;
+        if (size == capacity) {
+            return false;
+        }
         
         int current = size;
         minHeap[current] = key;
         size++;
         
-        while(current != 0 && minHeap[current] < minHeap[parent(current)]){
+        while (current != 0
+               && minHeap[current] < minHeap[parent(current)]) {
             Swap(current, Parent(current));
             current = Parent(current);
         }
@@ -148,14 +169,17 @@ public class PQ {
     
     public void descreaseKey(int key, int newKey){
         minHeap[key] = newKey;
-        while(key != 0 && minHeap[key] < minHeap[Parent(key)]{
+        while(key != 0
+              && minHeap[key] < minHeap[Parent(key)]){
             Swap(key, Parent(key));
             key = Parent(key);
         }
     }
               
     public void ChangeValueOfKey(int key, int newKey){
-        if(minHeap[key] == newKey) return;
+        if(minHeap[key] == newKey) {
+            return;
+        }
         
         if(minHeap[key] < newKey){
             increaseKey(key, newKey);
