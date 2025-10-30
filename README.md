@@ -10,9 +10,9 @@
 
 ## Introduction
 
-Hello! 
+Hello, y'all! 
 
-This repository is filled with code implementations of fundamental and some advance data structures, sorting algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
+This repository is filled with code implementations of fundamental and advance data structures, sorting algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
 
 Feel free to look over my C# references and don't be shy if you find something wrong, found better ways to do things, or want to contribute to the bettering of this repository. Anything helps and is welcomed!
 
@@ -65,17 +65,17 @@ Note that each main.cs file contains the actual classes for the various data str
     * [Queue](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/queue)
     * [Stack](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/dataStructures/stack)
 
-* [Sorting Algorithms](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms)
-    * [Bubble Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bubbleSort)
+* [Sorting Algorithms](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms)
+    * [Bubble Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/bubbleSort)
 
-    * [Bucket Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/bucketSort)
-    * [Counting Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/countingSort)
-    * [Heap Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/heapSort)
-    * [Insertion Sort](https://github.com/ej-sanmartin/ComputerScienceReference/blob/master/searchAlogrithms/insertionSort)
-    * [Merge Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/mergeSort)
-    * [Quick Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/quickSort)
-    * [Radix Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/radixSort)
-    * [Selection Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/searchAlogrithms/selectionSort)
+    * [Bucket Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/bucketSort)
+    * [Counting Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/countingSort)
+    * [Heap Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/heapSort)
+    * [Insertion Sort](https://github.com/ej-sanmartin/ComputerScienceReference/blob/master/sortAlgorithms/insertionSort)
+    * [Merge Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/mergeSort)
+    * [Quick Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/quickSort)
+    * [Radix Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/radixSort)
+    * [Selection Sort](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/sortAlgorithms/selectionSort)
 
 * [Graph Theory](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory)
     * [A* Search Algorithm](https://github.com/ej-sanmartin/ComputerScienceReference/tree/master/graphTheory/aStarAlgorithm)
@@ -130,7 +130,6 @@ Graph theory is a great way to solve many kinds of relational problems and is wi
 
 
 ## Bug Fixes & Improvements
-- Major one: Search Algorithms Folder incorrectly named. Must be changed to "Sort Algorithms" and all links must point to renamed folder
 
 - Update codebase to adhere to [Google's Coding Style Guide](https://github.com/google/styleguide/blob/gh-pages/csharp-style.md) for C# and other supported languages
 
