@@ -1,39 +1,48 @@
-/*
-  Without memo:
-  T - O(2^n)
-  S - O(n)
-  
-  With memo and with bottom up implementation:
-  T - O(n^2)
-  S - O(n * c)
-*/
-class Knapsack {
-  // Top Down Solution with memoization
-  public int solveKnapsack(int[] profits, int[] weights, int capacity){
-    Integer[][] memo = new Integer[capacity + 1][profits.length]; // make memo
+/**
+ * Implements the 0/1 Knapsack problem using dynamic programming.
+ *
+ * Without memoization:
+ * Time Complexity: O(2^n)
+ * Space Complexity: O(n)
+ *
+ * With memoization and bottom-up implementation:
+ * Time Complexity: O(n^2)
+ * Space Complexity: O(n * capacity)
+ */
+public class Knapsack {
+  /**
+   * Solves the 0/1 Knapsack problem using top-down dynamic programming with memoization.
+   *
+   * @param profits the array of profits for each item
+   * @param weights the array of weights for each item
+   * @param capacity the maximum capacity of the knapsack
+   * @return the maximum profit that can be achieved
+   */
+  public int solveKnapsack(int[] profits, int[] weights, int capacity) {
+    Integer[][] memo = new Integer[capacity + 1][profits.length];
     return recursiveKnapsack(profits, weights, capacity, profits.length - 1, memo);
   }
 
-  public int recursiveKnapsack(int[] profits, int[] weights, int capacity, int decision, Integer[][] memo){
-    if(decision < 0 || capacity == 0){ // base case and checks if we are out of bounds
+  private int recursiveKnapsack(int[] profits, int[] weights, int capacity, int decision, Integer[][] memo) {
+    if (decision < 0 || capacity == 0) { // base case and bounds check
       return 0;
     }
-    
-    if(memo[capacity][decision] != null){ // if solution already found, return it.. no need to recompute everything
+
+    if (memo[capacity][decision] != null) { // return cached result if available
       return memo[capacity][decision];
     }
 
     int result;
-    if(weights[decision] > capacity){ // if the weight is too large, call this method skipping this item
-      result = recursiveKnapsack(profits, weights, capacity, decision - 1, memo); 
-    } else { // else, find max of the below two cases
-      int profitsOne = recursiveKnapsack(profits, weights, capacity, decision - 1, memo); // calculate profit if you were not to take current item
-      int profitsTwo = profits[decision] + recursiveKnapsack(profits, weights, capacity - weights[decision], decision - 1, memo); // calculcate profit if you did take this item, remember to update weight
-      result = Math.max(profitsOne, profitsTwo);
+    if (weights[decision] > capacity) { // item too heavy, skip it
+      result = recursiveKnapsack(profits, weights, capacity, decision - 1, memo);
+    } else { // choose maximum of including or excluding the item
+      int profitsWithout = recursiveKnapsack(profits, weights, capacity, decision - 1, memo);
+      int profitsWith = profits[decision] + recursiveKnapsack(profits, weights, capacity - weights[decision], decision - 1, memo);
+      result = Math.max(profitsWithout, profitsWith);
     }
 
-    memo[capacity][decision] = result; // cache result
-    return memo[capacity][decision];
+    memo[capacity][decision] = result; // cache the result
+    return result;
   }
   
   // Bottom up solution

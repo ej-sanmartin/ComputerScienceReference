@@ -1,8 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class ArrayPermutations {
+/**
+ * Provides methods for generating permutations of arrays.
+ */
+public class ArrayPermutations {
 
+  /**
+   * Finds all permutations of the given array.
+   *
+   * @param nums the input array of integers
+   * @return a list of all possible permutations, where each permutation is a list of integers
+   */
   public static List<List<Integer>> findPermutations(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
     permutations(nums, 0, new ArrayList<Integer>(), result);
