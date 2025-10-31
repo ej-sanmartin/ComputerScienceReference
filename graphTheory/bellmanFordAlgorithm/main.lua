@@ -36,13 +36,14 @@ function bellmanFordAlgorithm(graph, source)
 
     -- optimization, if we go through a loop without updating distances array,
     -- shortest paths and costs from source to all other vertices found
-    if change == false then
+    if changed == false then
       break
     end
   end
 
   -- we do one more loop on all edges, if a better path is found at this point
-  -- then there is negatve weight cycle. Can return boolean at this point or break
+  -- then there is negative weight cycle. Can return boolean at this point
+  -- or break
   -- if you want to return the distances array with negative distances
   for vertex = 1, vertices do
     local current = list[vertex]:getHead()

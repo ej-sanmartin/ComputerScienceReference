@@ -25,7 +25,7 @@ public class LinkedList {
     // T - O(1)
     public void AddFront(int value){
         Node newNode = new Node(value);
-        if(heaad == null){
+        if(head == null){
             head = newNode;
             size++;
             return;
@@ -38,7 +38,7 @@ public class LinkedList {
 
     // T - O(n)
     public void AddLast(int value){
-        Node nextNode = new Node(value);
+        Node newNode = new Node(value);
         if(isEmpty()){
             head = newNode;
             size++;
@@ -147,14 +147,14 @@ public class LinkedList {
     }
     
     public int FindMid(){
-        if (IsEmpty()) return 0;
+        if (isEmpty()) return 0;
         
         Node current = head;
 
         if (current.next == null) return current.value;
 
         Node mid = current;
-        current= current.next.next;
+        current = current.next.next;
 
         while (current != null){
             mid = mid.next;

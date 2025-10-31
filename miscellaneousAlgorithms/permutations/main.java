@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class ArrayPermutations {
 
   public static List<List<Integer>> findPermutations(int[] nums) {
@@ -9,7 +12,7 @@ class ArrayPermutations {
   private static void permutations(int[] nums, int index, List<Integer> currentPermutation,
       List<List<Integer>> result) {
     if (index == nums.length) {
-      result.add(currentPermutation);
+      result.add(new ArrayList<>(currentPermutation));
     } else {
       for (int i = 0; i <= currentPermutation.size(); i++) {
         List<Integer> newPermutation = new ArrayList<Integer>(currentPermutation);
@@ -20,7 +23,7 @@ class ArrayPermutations {
   }
 
   public static void main(String[] args) {
-    List<List<Integer>> result = Permutations.findPermutations(new int[] { 1, 2 });
-    System.out.print("Here are all the permutations: " + result);
+    List<List<Integer>> result = ArrayPermutations.findPermutations(new int[] { 1, 2 });
+    System.out.println("Here are all the permutations: " + result);
   }
 }

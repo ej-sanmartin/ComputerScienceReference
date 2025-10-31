@@ -35,11 +35,11 @@ function MinHeap:hasParent(childIndex)
 end
 
 function MinHeap:getLeftChild(parentIndex)
-  return self.__heap[MinHeap:leftChildIndex(parentIndex)]
+  return self.__heap[self:leftChildIndex(parentIndex)]
 end
 
 function MinHeap:getRightChild(parentIndex)
-  return self.__heap[MinHeap:rightChildIndex(parentIndex)]
+  return self.__heap[self:rightChildIndex(parentIndex)]
 end
 
 function MinHeap:getParent(childIndex)

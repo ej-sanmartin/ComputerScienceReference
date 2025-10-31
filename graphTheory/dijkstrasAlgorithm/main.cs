@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // Adjacency Matrix
 // T - O(V^2), S - O(V * V)
 public class DijkstrasMatrixGraph {
-    public static void DijkstrasAlogrithm(int[,] graph, int source, int verticesCount){
+    public static void DijkstrasAlgorithm(int[,] graph, int source, int verticesCount){
         int[] distance = new int[verticesCount];
         bool[] shortestPathsTreeSet = new bool[verticesCount];
 
@@ -16,15 +16,15 @@ public class DijkstrasMatrixGraph {
         distance[source] = 0;
 
         for(int current = 0; current < verticesCount; current++){
-            int current = MinimumDistance(distance, shortestPathsTreeSet, verticesCount);
-            shortestPathsTreeSet[current] = true;
+            int u = MinimumDistance(distance, shortestPathsTreeSet, verticesCount);
+            shortestPathsTreeSet[u] = true;
 
             for(int vertex = 0; vertex < verticesCount; vertex++){
                 if(!shortestPathsTreeSet[vertex]
-                    && Convert.ToBoolean(graph[current, vertex])
-                    && distance[current] != int.MaxValue
-                    && distance[current] + graph[current, vertex] < distance[vertex]){
-                        distance[vertex] = distance[current] + graph[current, vertex];
+                    && Convert.ToBoolean(graph[u, vertex])
+                    && distance[u] != int.MaxValue
+                    && distance[u] + graph[u, vertex] < distance[vertex]){
+                        distance[vertex] = distance[u] + graph[u, vertex];
                     }
             }
         }
@@ -81,9 +81,9 @@ public class DijkstrasAdjacencyListGraph{
             Node vertex = adjacencyList[current][adjacent];
             if(!seen.Contains(vertex.value)){
                 edgeDistance = vertex.cost;
-                newDistance = distance[vetex] + edgeDistance;
+                newDistance = distance[vertex.value] + edgeDistance;
                 if(newDistance < distance[vertex.value]){
-                    distance[vertex.value] = newEdge;
+                    distance[vertex.value] = newDistance;
                 }
 
                 priorityQueue.Insert(new Node(vertex.value, distance[vertex.value]));
@@ -91,7 +91,7 @@ public class DijkstrasAdjacencyListGraph{
         }
     }
 
-    public void DijkstrasAlogrithm(List<List<Node>> adjacencyList, int source){
+    public void DijkstrasAlgorithm(List<List<Node>> adjacencyList, int source){
         this.adjacencyList = adjacencyList;
         for(int vertex = 0; vertex < vertices; vertex++){
             distance[vertex] = int.MaxValue;

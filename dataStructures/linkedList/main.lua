@@ -65,8 +65,8 @@ end
 
 -- T - O(n)
 function LinkedList:addLast(value)
-  if LinkedList:isEmpty() then
-    LinkedList:addFront(value)
+  if self:isEmpty() then
+    self:addFront(value)
     return
   end
 
@@ -99,7 +99,7 @@ function LinkedList:removeAValue(value)
       if(current == self.__head) then
         self.__head = current.nextNode
       else
-        seninel.nextNode = current.nextNode
+        sentinel.nextNode = current.nextNode
         current = sentinel.nextNode
       end
 
@@ -107,7 +107,7 @@ function LinkedList:removeAValue(value)
       return true
     end
 
-    seninel = current
+    sentinel = current
     current = current.nextNode
   end
 
@@ -137,29 +137,29 @@ end
 
 -- T - O(n)
 function LinkedList:removeLast()
+  if self:isEmpty() then
+    io.write("WARNING: cannot remove last node of an empty linked list\n\n")
+    return
+  end
+
+  if self.__head.nextNode == nil then
+    self.__head = nil
+    self.__size = self.__size - 1
+    return
+  end
+
   local current = self.__head
-
-  while current ~= nil do
-    if current.nextNode == nil then
-      if current == self.__head then
-        self.__head = nil
-      else
-        current = nil
-      end
-
-      self.__size = self.__size - 1
-      return
-    end
-
+  while current.nextNode.nextNode ~= nil do
     current = current.nextNode
   end
 
-  io.write("WARNING: cannot remove last node of an empty linked list\n\n")
+  current.nextNode = nil
+  self.__size = self.__size - 1
 end
 
 -- T - O(n)
 function LinkedList:contains(value)
-  if LinkedList:isEmpty() then
+  if self:isEmpty() then
     return false
   end
 
@@ -183,7 +183,7 @@ end
   Would be the lua implementation of this algorithm though.
 ]]
 function LinkedList:containsCycle()
-  if LinkedList:isEmpty() then
+  if self:isEmpty() then
     io.write("List empty; could not find any cycles")
     return false
   end
@@ -193,7 +193,7 @@ function LinkedList:containsCycle()
 
   while fast ~= nil and fast.nextNode ~= nil  do
     slow = slow.nextNode
-    fast = fast.nextNode.newNode
+    fast = fast.nextNode.nextNode
 
     if slow == fast then
       return true
@@ -219,7 +219,7 @@ function LinkedList:reverse()
   self.__head = previous
 end
 
--- T O(n)
+-- T - O(n)
 function LinkedList:printLinkedList()
   local current = self.__head
 

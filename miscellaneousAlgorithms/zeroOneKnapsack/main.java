@@ -37,7 +37,7 @@ class Knapsack {
   }
   
   // Bottom up solution
-  public int solveKnapsack(int[] profits, int[] weights, int capacity){
+  public int solveKnapsackBottomUp(int[] profits, int[] weights, int capacity){
     if(capacity == 0 || profits.length < 1 || profits == null || profits.length != weights.length){ // base cases
       return 0;
     }
