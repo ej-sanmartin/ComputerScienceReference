@@ -1,40 +1,48 @@
+--[[
+BreadthFirstTraversal.lua
+Implements breadth-first traversal algorithms for trees and graphs following Roblox Lua Style Guide.
+]]
+
 local queue = require("queue")
 local binarySearchTree = require("binarysearchtree")
 local graph = require("graph")
 local adjacencyList = graph.AdjacencyListGraph
 local adjacencyMatrix = graph.AdjacencyMatrixGraph
 
--- BFS on a tree
+--- Performs breadth-first traversal on a binary tree and prints level order
+-- @param tree The root node of the binary tree
 -- T - O(n)
-function printLevelOrderTree(tree)
-  if tree == nil then
-    io.write("WARNING: Tree passed is null\n")
-    return
-  end
+function PrintLevelOrderTree(tree)
+	if tree == nil then
+		io.write("WARNING: Tree passed is null\n")
+		return
+	end
 
-  local q = queue.new()
-  q:enqueue(tree)
+	local q = queue.new()
+	q:enqueue(tree)
 
-  while q:count() ~= 0 do
-    local current = q:dequeue()
-    io.write(string.format("%d ", current.value))
+	while q:count() ~= 0 do
+		local current = q:dequeue()
+		io.write(string.format("%d ", current.value))
 
-    if current.left ~= nil then
-      q:enqueue(current.left)
-    end
+		if current.left ~= nil then
+			q:enqueue(current.left)
+		end
 
-    if current.right ~= nil then
-      q:enqueue(current.right)
-    end
-  end
+		if current.right ~= nil then
+			q:enqueue(current.right)
+		end
+	end
 end
 
--- BFS on a tree, returns list of size levels
-function treeToLevelOrderList(tree)
-  local list = {}
-  if tree == nil then
-    return list
-  end
+--- Performs breadth-first traversal on a binary tree and returns level order as lists
+-- @param tree The root node of the binary tree
+-- @return A table containing lists for each level
+function TreeToLevelOrderList(tree)
+	local list = {}
+	if tree == nil then
+		return list
+	end
 
   local q = queue.new()
   local level = 0

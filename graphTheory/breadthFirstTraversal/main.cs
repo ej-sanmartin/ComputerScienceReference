@@ -1,74 +1,113 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 
+/// <summary>
+/// Provides breadth-first traversal algorithms for trees and graphs.
+/// </summary>
 // T - O(V + E)
 
-// Iterative BFT of a Binary Search Tree
+/// <summary>
+/// Performs breadth-first traversal on a binary search tree.
+/// </summary>
 public class BreadthFirstTreeTraversal {
     private class Node {
-        public int value;
-        public Node left, right;
-        public Node(int value){ this.value = value; }
+        public int Value { get; set; }
+        public Node Left { get; set; }
+        public Node Right { get; set; }
+
+        public Node(int value) {
+            Value = value;
+        }
     }
 
     private Node root;
-    public BreadthFirstTreeTraversal(int value){ root = new Node(value); }
-    
+
+    /// <summary>
+    /// Initializes a new instance of the BreadthFirstTreeTraversal class.
+    /// </summary>
+    /// <param name="value">The root value of the tree.</param>
+    public BreadthFirstTreeTraversal(int value) {
+        root = new Node(value);
+    }
+
+    /// <summary>
+    /// Prints the level order traversal of the tree.
+    /// </summary>
     // T - O(n)
-    public void PrintLevelOrder(){
-        if(root == null){ return; }
+    public void PrintLevelOrder() {
+        if (root == null) {
+            return;
+        }
 
         Queue<Node> queue = new Queue<Node>();
         queue.Enqueue(root);
 
-        while(queue.Count != 0){
+        while (queue.Count != 0) {
             Node current = queue.Dequeue();
-            Console.WriteLine(current.value);
+            Console.WriteLine(current.Value);
 
-            if(current.left != null){ queue.Enqueue(current.left); }
-            if(current.right != null){ queue.Enqueue(current.right); }
+            if (current.Left != null) {
+                queue.Enqueue(current.Left);
+            }
+            if (current.Right != null) {
+                queue.Enqueue(current.Right);
+            }
         }
     }
 }
 
 
-// Iterative Breadth First Search of a graph
+/// <summary>
+/// Performs breadth-first search traversal on a graph.
+/// </summary>
 public class BreadFirstTraversalGraph {
     private int vertices;
     private List<int>[] adjacencyList;
 
-    public BreadFirstTraversalGraph(int vertices){
+    /// <summary>
+    /// Initializes a new instance of the BreadFirstTraversalGraph class.
+    /// </summary>
+    /// <param name="vertices">The number of vertices in the graph.</param>
+    public BreadFirstTraversalGraph(int vertices) {
         this.vertices = vertices;
         adjacencyList = new List<int>[vertices];
-        for(int i = 0; i < vertices; i++){
+        for (int i = 0; i < vertices; i++) {
             adjacencyList[i] = new List<int>();
         }
     }
 
-    public void AddEdge(int vertex, int edge){
+    /// <summary>
+    /// Adds an edge between two vertices in the graph.
+    /// </summary>
+    /// <param name="vertex">The source vertex.</param>
+    /// <param name="edge">The destination vertex.</param>
+    public void AddEdge(int vertex, int edge) {
         adjacencyList[vertex].Add(edge);
     }
 
-    public void BreadthFirstSearch(int source){
+    /// <summary>
+    /// Performs breadth-first search starting from the specified source vertex.
+    /// </summary>
+    /// <param name="source">The source vertex to start the search from.</param>
+    public void BreadthFirstSearch(int source) {
         bool[] visited = new bool[vertices];
         Queue<int> queue = new Queue<int>();
 
-        for(int vertex = 0; vertex < vertices; vertex++){
+        for (int vertex = 0; vertex < vertices; vertex++) {
             visited[vertex] = false;
         }
 
         visited[source] = true;
         queue.Enqueue(source);
 
-        while(queue.Count != 0){
+        while (queue.Count != 0) {
             int current = queue.Dequeue();
             Console.WriteLine(current);
 
             List<int> adjacentList = adjacencyList[current];
 
-            foreach(int adjacent in adjacentList){
-                if(!visited[adjacencyList]){
+            foreach (int adjacent in adjacentList) {
+                if (!visited[adjacent]) {
                     visited[adjacent] = true;
                     queue.Enqueue(adjacent);
                 }
