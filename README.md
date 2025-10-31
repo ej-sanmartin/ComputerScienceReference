@@ -12,7 +12,7 @@
 
 Hello, y'all! 
 
-This repository is filled with code implementations of fundamental and advance data structures, sorting algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome Microsofters and Unity developers). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
+This repository is filled with code implementations of fundamental and advance data structures, sorting algorithms, and graph traversal algorithms. This codebase was written in C# (you're welcome game devs). However, I made sure to make variables and functions as clear as possible so that it can be easily read and understood in every other programming language.
 
 Feel free to look over my C# references and don't be shy if you find something wrong, found better ways to do things, or want to contribute to the bettering of this repository. Anything helps and is welcomed!
 
