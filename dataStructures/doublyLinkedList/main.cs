@@ -1,31 +1,66 @@
 using System;
 
+/// <summary>
+/// Represents a doubly linked list data structure.
+/// </summary>
 public class DoublyLinkedList {
     private class Node {
-        public int value;
-        public Node next, previous;
-        public Node(int value){ this.value = value; }
+        public int Value { get; set; }
+        public Node Next { get; set; }
+        public Node Previous { get; set; }
+
+        public Node(int value) {
+            Value = value;
+        }
     }
 
     private Node head;
     private int size;
 
-    public DoublyLinkedList(int value){ head = new Node(value); }
+    /// <summary>
+    /// Initializes a new instance of the DoublyLinkedList class with a single node.
+    /// </summary>
+    /// <param name="value">The initial value for the list.</param>
+    public DoublyLinkedList(int value) {
+        head = new Node(value);
+        size = 1;
+    }
 
+    /// <summary>
+    /// Checks if the doubly linked list is empty.
+    /// </summary>
+    /// <returns>True if the list is empty, false otherwise.</returns>
     // T - O(1)
-    public bool isEmpty(){ return head == null; }
+    public bool IsEmpty() {
+        return head == null;
+    }
 
+    /// <summary>
+    /// Clears all elements from the doubly linked list.
+    /// </summary>
     // T - O(1)
-    public void Clear(){
+    public void Clear() {
         head = null;
         size = 0;
     }
 
+    /// <summary>
+    /// Gets the size of the doubly linked list.
+    /// </summary>
+    /// <returns>The number of elements in the list.</returns>
     // T - O(1)
-    public int Size(){ return size; }
+    public int Size() {
+        return size;
+    }
 
+    /// <summary>
+    /// Returns the value at the front of the doubly linked list without removing it.
+    /// </summary>
+    /// <returns>The value at the front of the list.</returns>
     // T - O(1)
-    public int Peak(){ return head.value; }
+    public int Peak() {
+        return head.Value;
+    }
 
     // T - O(1)
     public void Pop(){
