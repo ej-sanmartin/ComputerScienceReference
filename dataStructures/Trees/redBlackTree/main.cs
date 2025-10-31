@@ -51,7 +51,7 @@ public class RedBlackTree {
     }
 
     private Node Max(Node node){
-        if(node == null){ throw new ArgumentNullException("Argument is null, canot proceed with Max function"); }
+        if(node == null){ throw new ArgumentNullException("Argument is null, cannot proceed with Max function"); }
 
         if(node.right == null){ return node; }
         else { return Max(node.right); }
@@ -71,7 +71,7 @@ public class RedBlackTree {
     }
 
     private Node RotateLeft(Node node){
-        if(node == null ||isRead(node.right)){ throw new ArgumentException("Please enter a valid argument"); }
+        if(node == null || isRed(node.right)){ throw new ArgumentException("Please enter a valid argument"); }
 
         Node rightChild = node.right;
         node.right = rightChild.left;
@@ -84,12 +84,10 @@ public class RedBlackTree {
     }
 
     private void FlipColors(Node node){
-        if((node == null && node.left != null && node.right != null)
-            && (!isRed(node) && isRed(node.left) ** isRed(node.right))
-            || (isRed(node) && !isRed(node.left) && !isRed(node.right))){
-                node.color = !node.color;
-                node.left.color = !node.left.color;
-                node.right.color = !node.right.color;
+        if(node != null && node.left != null && node.right != null){
+            node.color = !node.color;
+            node.left.color = !node.left.color;
+            node.right.color = !node.right.color;
         }
     }
 
@@ -108,7 +106,7 @@ public class RedBlackTree {
         }
     }
 
-    private MoveRedRight(Node node){
+    private Node MoveRedRight(Node node){
         if(node != null && isRed(node) && !isRed(node.left) && !isRed(node.right)){
             FlipColors(node);
             if(isRed(node.left.left)){
@@ -134,28 +132,23 @@ public class RedBlackTree {
     }
 
     // T - O(logn)
-    public int Find(int key){
-        if(key == null){ throw new ArgumentNullException("Null value is not allowed to be passed in the Find function."); }
+    public int? Find(int key){
         return FindHelper(root, key);
     }
 
-    private int FindHelper(Node node, int key){
+    private int? FindHelper(Node node, int key){
         while(node != null){
             if(key < node.key){ node = node.left; }
             else if(key > node.key){ node = node.right; }
             else { return node.value; }
         }
+        return null;
     }
 
     public bool Contains(int key){ return Find(key) != null; }
 
     // T - O(logn)
     public void Insert(int key, int value){
-        if(key == null){ throw new ArgumentNullException("First argument must be a non null int value."); }
-        if(value == null){
-            Delete(key);
-            return;
-        }
 
         root = InsertHelper(root, key, value);
         root.color = BLACK;
@@ -221,8 +214,6 @@ public class RedBlackTree {
 
     // T - O(logn)
     public void Delete(int key){
-        if(key == null){ throw new ArgumentNullException("Cannot delete anything if you don't pass anything in the Delete function."); }
-
         if(!Contains(key)){ return; }
 
         if(!isRed(root.left) && !isRed(root.right)){ root.color = RED; }
@@ -244,7 +235,7 @@ public class RedBlackTree {
                 Node minNode = Min(node.right);
                 node.key = minNode.key;
                 node.value = minNode.value;
-                node.right = Delete(node.right);
+                node.right = DeleteMinHelper(node.right);
             } else {
                 node.right = DeleteHelper(node.right, key);
             }

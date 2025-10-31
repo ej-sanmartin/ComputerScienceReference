@@ -14,13 +14,15 @@ public class BucketSort {
         }
 
         for(int i = 0; i < arr.Length; i++){
-            float bucket = (arr[i] / n);
-            buckets[bucket].Add(arr[i]);
+            int bucketIndex = (int)(arr[i] * n);
+            if(bucketIndex >= n) bucketIndex = n - 1;
+            if(bucketIndex < 0) bucketIndex = 0;
+            buckets[bucketIndex].Add(arr[i]);
         }
 
         for(int i = 0; i < n; i++){
-            List<float> temporary = buckets[i].Sort();
-            sortedArray.AddRange(temporary);
+            buckets[i].Sort();
+            sortedArray.AddRange(buckets[i]);
         }
 
         return sortedArray;

@@ -1,6 +1,6 @@
 // T - O(|V|^3), S - O(|V|^2)
 public class FloydWarshallGraph {
-    private readonly INFINITY = int.MaxValue;
+    private const int INFINITY = int.MaxValue;
     
     public static void FloydWarshallAlgorithm(int[,] graph, int vertices){
         int[,] distances = new int[vertices, vertices];
@@ -16,7 +16,7 @@ public class FloydWarshallGraph {
             for(i = 0; i < vertices; i++){
                 for(j = 0; j < vertices; j++){
                     if(distances[i, k] != INFINITY &&
-                       distances[k , j] != INFININTY &&
+                       distances[k , j] != INFINITY &&
                        distances[i, k] + distances[k, j] < distances[i, j]){
                         distances[i, j] = distances[i, k] + distances[k, j];
                     }

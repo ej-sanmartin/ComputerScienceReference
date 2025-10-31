@@ -2,10 +2,15 @@ using System;
 
 // S - O(n)
 public class BTree {
+    private readonly int MAX_CHILDREN = 4;
+
     private class Node {
         public int childrenCount;
-        public Entry[] children = new Entry[childrenCount];
-        public Node(int childrenCount){ this.childrenCount = childrenCount; }
+        public Entry[] children;
+        public Node(int childrenCount, int maxChildren){
+            this.childrenCount = childrenCount;
+            this.children = new Entry[maxChildren];
+        }
     }
 
     private class Entry {
@@ -22,7 +27,7 @@ public class BTree {
     private readonly int MAX_CHILDREN = 4;
     private int height, size;
 
-    public BTree(){ root = new Node(0); }
+    public BTree(){ root = new Node(0, MAX_CHILDREN); }
 
     public bool isEmpty(){ return size == 0; }
 
@@ -31,7 +36,7 @@ public class BTree {
     public int Height(){ return height; }
 
     private Node Split(Node node){
-        Node newNode = new Node(MAX_CHILDREN / 2);
+        Node newNode = new Node(MAX_CHILDREN / 2, MAX_CHILDREN);
         node.childrenCount = MAX_CHILDREN / 2;
 
         for(int i = 0; i < MAX_CHILDREN / 2; i++){
@@ -42,22 +47,20 @@ public class BTree {
     }
 
     // T - O(logn)
-    public int Find(int key){
-        if(key == null){ throw new ArgumentNullException("Please pass a valid, non null value"); }
-
+    public int? Find(int key){
         return FindHelper(root, key, height);
     }
 
-    private int FindHelper(Node current, int key, int height){
+    private int? FindHelper(Node current, int key, int height){
         Entry[] children = current.children;
 
         if(height == 0){
             for(int i = 0; i < current.childrenCount; i++){
-                if(key == children[i].key){ return (int) children[i].value; }
+                if(key == children[i].key){ return children[i].value; }
             }
         } else {
             for(int i = 0; i < current.childrenCount; i++){
-                if(i + 1 == current.childrenCount || key < childrent[i + 1].key){
+                if(i + 1 == current.childrenCount || key < children[i + 1].key){
                     return FindHelper(children[i].next, key, height - 1);
                 }
             }
@@ -68,7 +71,6 @@ public class BTree {
 
     // T - O(logn)
     public void Insert(int key, int value){
-        if(key == null){ throw new ArgumentNullException("Please pass a valid, non null value"); }
 
         Node updatedNode = InsertHelper(root, key, value, height);
 
@@ -76,10 +78,11 @@ public class BTree {
 
         if(updatedNode == null){ return; }
 
-        Node splitRoot = new Node(2);
+        Node splitRoot = new Node(2, MAX_CHILDREN);
 
-        splitRoot[0] = new Entry(root.children[0].key, null, root);
-        splitRoot[1] = new Entry(updatedNode.children[0].key, null, updatedNode);
+        splitRoot.children[0] = new Entry(root.children[0].key, 0, root);
+        splitRoot.children[1] = new Entry(updatedNode.children[0].key, 0, updatedNode);
+        splitRoot.childrenCount = 2;
 
         root = splitRoot;
         height++;

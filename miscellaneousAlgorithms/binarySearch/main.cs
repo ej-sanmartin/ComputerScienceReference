@@ -11,7 +11,7 @@ public class BinarySearchIterative {
     int middle = 0;
     
     while(low <= high){
-      middle = low + high;
+      middle = (low + high) / 2;
       guess = arr[middle];
       
       if(guess == targetValue){

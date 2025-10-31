@@ -8,12 +8,12 @@ public class JohnsonsGraph {
 
     public JohnsonsGraph(int nodeCount){
         this.nodeCount = nodeCount;
-        augmentedMatrix = new int[nodeCount + 2][nodeCount + 2];
+        augmentedMatrix = new int[nodeCount + 2, nodeCount + 2];
         SOURCE_NODE = nodeCount + 1;
         potential = new int[nodeCount + 2];
         bellmanFord = new BellmanFordGraph(nodeCount + 1);
         dijkstras = new DijkstrasGraph(nodeCount);
-        allShortestsPaths = new int[nodeCount + 1][nodeCount + 1];
+        allShortestsPaths = new int[nodeCount + 1, nodeCount + 1];
     }
 
     private void ComputeAugmentedGraph(int[][] adjacencyMatrix){
@@ -29,7 +29,7 @@ public class JohnsonsGraph {
     }
 
     private int[][] ReweightGraph(int[][] adjacencyMatrix){
-        int[][] result = new int[nodeCount + 1][nodeCount + 1];
+        int[][] result = new int[nodeCount + 1, nodeCount + 1];
 
         for(int source = 1; source <= nodeCount; source++){
             for(int destination = 1; destination <= nodeCount; destination++){
@@ -44,7 +44,7 @@ public class JohnsonsGraph {
         ComputeAugmentedGraph(adjacencyMatrix);
         bellmanFord.BellmanFordAlgorithm(adjacencyMatrix, SOURCE_NODE);
         potential = bellmanFord.GetDistances();
-        int[][] reweightedGraph = reweightedGraph(adjacencyMatrix);
+        int[][] reweightedGraph = ReweightGraph(adjacencyMatrix);
 
         for(int source = 1; source <= nodeCount; source++){
             dijkstras.DijkstrasAlgorithm(reweightedGraph, source);
