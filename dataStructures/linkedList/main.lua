@@ -1,74 +1,97 @@
+--[[
+LinkedList.lua
+Implements a singly linked list data structure following Roblox Lua Style Guide.
+]]
+
 local Node = {}
 Node.__index = Node
 
+--- Creates a new Node with the given value
+-- @param value The value to store in the node
+-- @return A new Node instance
 function Node.new(value)
-  local self = setmetatable({}, Node)
+	local self = setmetatable({}, Node)
 
-  self.value = value
-  self.nextNode = nil
+	self.value = value
+	self.nextNode = nil
 
-  return self
+	return self
 end
 
 local LinkedList = {}
 LinkedList.__index = LinkedList
 
+--- Creates a new LinkedList
+-- @return A new LinkedList instance
 function LinkedList.new()
-  local self = setmetatable({}, LinkedList)
+	local self = setmetatable({}, LinkedList)
 
-  self.__head = nil
-  self.__size = 0
+	self.__head = nil
+	self.__size = 0
 
-  return self
+	return self
 end
 
+--- Checks if the linked list is empty
+-- @return boolean True if empty, false otherwise
 -- T - O(1)
-function LinkedList:isEmpty()
-  return self.__size == 0
+function LinkedList:IsEmpty()
+	return self.__size == 0
 end
 
+--- Clears all elements from the linked list
 -- T - O(1)
-function LinkedList:clear()
-  self.__head = nil
-  self.__size = 0
+function LinkedList:Clear()
+	self.__head = nil
+	self.__size = 0
 end
 
+--- Gets the size of the linked list
+-- @return number The number of elements in the list
 -- T - O(1)
-function LinkedList:getSize()
-  return self.__size
+function LinkedList:GetSize()
+	return self.__size
 end
 
+--- Gets the head node of the linked list
+-- @return Node The head node, or nil if empty
 -- T - O(1)
-function LinkedList:getHead()
-  return self.__head
+function LinkedList:GetHead()
+	return self.__head
 end
 
+--- Peeks at the value of the head node without removing it
+-- @return The value at the head, or nil if empty
 -- T - O(1)
-function LinkedList:peak()
-  return self.__head.value
+function LinkedList:Peek()
+	return self.__head and self.__head.value or nil
 end
 
+--- Adds a new element to the front of the linked list
+-- @param value The value to add
 -- T - O(1)
-function LinkedList:addFront(value)
-  local newNode = Node.new(value)
+function LinkedList:AddFront(value)
+	local newNode = Node.new(value)
 
-  if self.__head == nil then
-    self.__head = newNode
-    self.__size = self.__size + 1
-    return
-  end
+	if self.__head == nil then
+		self.__head = newNode
+		self.__size = self.__size + 1
+		return
+	end
 
-  newNode.nextNode = self.__head
-  self.__head = newNode
-  self.__size = self.__size + 1
+	newNode.nextNode = self.__head
+	self.__head = newNode
+	self.__size = self.__size + 1
 end
 
+--- Adds a new element to the end of the linked list
+-- @param value The value to add
 -- T - O(n)
-function LinkedList:addLast(value)
-  if self:isEmpty() then
-    self:addFront(value)
-    return
-  end
+function LinkedList:AddLast(value)
+	if self:IsEmpty() then
+		self:AddFront(value)
+		return
+	end
 
   local current = self.__head
 
