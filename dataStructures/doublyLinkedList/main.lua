@@ -1,32 +1,44 @@
+--[[
+DoublyLinkedList.lua
+Implements a doubly linked list data structure following Roblox Lua Style Guide.
+]]
+
 local Node = {}
 Node.__index = Node
 
+--- Creates a new Node with the given value
+-- @param value The value to store in the node
+-- @return A new Node instance
 function Node.new(value)
-  local self = setmetatable({}, Node)
+	local self = setmetatable({}, Node)
 
-  self.value = value
-  self.previous = nil
-  self.next = nil
+	self.value = value
+	self.previous = nil
+	self.next = nil
 
-  return self
+	return self
 end
 
 local DoublyLinkedList = {}
 DoublyLinkedList.__index = DoublyLinkedList
 
+--- Creates a new DoublyLinkedList
+-- @return A new DoublyLinkedList instance
 function DoublyLinkedList.new()
-  local self = setmetatable({}, DoublyLinkedList)
+	local self = setmetatable({}, DoublyLinkedList)
 
-  self.__head = nil
-  self.__tail = nil
-  self.__count = 0
+	self.__head = nil
+	self.__tail = nil
+	self.__count = 0
 
-  return self
+	return self
 end
 
+--- Gets the head node of the doubly linked list
+-- @return Node The head node, or nil if empty
 -- T - O(1)
-function DoublyLinkedList:getHead()
-  return self.__head
+function DoublyLinkedList:GetHead()
+	return self.__head
 end
 
 -- T - O(1)

@@ -1,20 +1,41 @@
+"""Linked List implementation in Python."""
+
+from typing import Any, Optional
+
+
 class Node:
-    def __init__(self, data):
+    """Represents a node in a linked list."""
+
+    def __init__(self, data: Any) -> None:
+        """Initialize a new node with the given data.
+
+        Args:
+            data: The data to store in the node.
+        """
         self.data = data
-        self.next = None
+        self.next: Optional[Node] = None
 
 
 class LinkedList:
-    def __init__(self):
-        self.head = None
+    """A singly linked list data structure."""
 
-    def print_list(self):
+    def __init__(self) -> None:
+        """Initialize an empty linked list."""
+        self.head: Optional[Node] = None
+
+    def print_list(self) -> None:
+        """Print all elements in the linked list."""
         cur_node = self.head
         while cur_node:
             print(cur_node.data)
             cur_node = cur_node.next
 
-    def append(self, data):
+    def append(self, data: Any) -> None:
+        """Add a new node with the given data to the end of the list.
+
+        Args:
+            data: The data to append to the list.
+        """
         new_node = Node(data)
 
         if self.head is None:
@@ -26,42 +47,54 @@ class LinkedList:
             last_node = last_node.next
         last_node.next = new_node
 
-    def prepend(self, data):
+    def prepend(self, data: Any) -> None:
+        """Add a new node with the given data to the beginning of the list.
+
+        Args:
+            data: The data to prepend to the list.
+        """
         new_node = Node(data)
 
         new_node.next = self.head
         self.head = new_node
 
-    def insert_after_node(self, prev_node, data):
+    def insert_after_node(self, prev_node: Node, data: Any) -> None:
+        """Insert a new node with the given data after the specified node.
 
+        Args:
+            prev_node: The node after which to insert the new node.
+            data: The data for the new node.
+        """
         if not prev_node:
             print("Previous node does not exist.")
-            return 
+            return
 
         new_node = Node(data)
 
         new_node.next = prev_node.next
         prev_node.next = new_node
 
-    def delete_node(self, key):
+    def delete_node(self, key: Any) -> None:
+        """Delete the first node containing the specified key.
 
+        Args:
+            key: The key value to search for and delete.
+        """
         cur_node = self.head
 
         if cur_node and cur_node.data == key:
             self.head = cur_node.next
-            cur_node = None
             return
 
-        prev = None 
+        prev = None
         while cur_node and cur_node.data != key:
             prev = cur_node
             cur_node = cur_node.next
 
         if cur_node is None:
-            return 
+            return
 
         prev.next = cur_node.next
-        cur_node = None
 
     def delete_node_at_pos(self, pos):
         if self.head:

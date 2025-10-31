@@ -1,31 +1,43 @@
+--[[
+Queue.lua
+Implements a queue data structure following Roblox Lua Style Guide.
+]]
+
 local Node = {}
 Node.__index = Node
 
+--- Creates a new Node with the given value
+-- @param value The value to store in the node
+-- @return A new Node instance
 function Node.new(value)
-  local self = setmetatable({}, Node)
+	local self = setmetatable({}, Node)
 
-  self.value = value
-  self.next = nil
+	self.value = value
+	self.next = nil
 
-  return self
+	return self
 end
 
 local Queue = {}
 Queue.__index = Queue
 
+--- Creates a new Queue
+-- @return A new Queue instance
 function Queue.new()
-  local self = setmetatable({}, Queue)
+	local self = setmetatable({}, Queue)
 
-  self.__head = nil
-  self.__tail = nil
-  self.__count = 0
+	self.__head = nil
+	self.__tail = nil
+	self.__count = 0
 
-  return self
+	return self
 end
 
+--- Checks if the queue is empty
+-- @return boolean True if empty, false otherwise
 -- T - O(1)
-function Queue:isEmpty()
-  return self.__count == 0
+function Queue:IsEmpty()
+	return self.__count == 0
 end
 
 -- T - O(1)

@@ -1,13 +1,28 @@
+"""Doubly Linked List implementation in Python."""
+
+from typing import Any, Optional
+
+
 class Node:
-  def __init__(self, data):
-    self.data = data
-    self.next = None
-    self.prev = None
+    """Represents a node in a doubly linked list."""
+
+    def __init__(self, data: Any) -> None:
+        """Initialize a new node with the given data.
+
+        Args:
+            data: The data to store in the node.
+        """
+        self.data = data
+        self.next: Optional[Node] = None
+        self.prev: Optional[Node] = None
 
 
 class DoublyLinkedList:
-  def __init__(self):
-    self.head = None
+    """A doubly linked list data structure."""
+
+    def __init__(self) -> None:
+        """Initialize an empty doubly linked list."""
+        self.head: Optional[Node] = None
 
   def append(self, data):
     if self.head is None:

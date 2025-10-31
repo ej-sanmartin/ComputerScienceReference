@@ -1,51 +1,77 @@
 using System;
 
+/// <summary>
+/// Represents an AVL self-balancing binary search tree.
+/// </summary>
 public class AVLTree {
     private class Node {
-        public int value, height, balanceFactor;
-        public Node left, right;
-        public Node(int value){
-            this.value = value;
+        public int Value { get; set; }
+        public int Height { get; set; }
+        public int BalanceFactor { get; set; }
+        public Node Left { get; set; }
+        public Node Right { get; set; }
+
+        public Node(int value) {
+            Value = value;
+            Height = 0;
+            BalanceFactor = 0;
         }
     }
 
     private Node root;
     private int nodeCount = 0;
 
-    public int Size(){ return nodeCount; }
+    /// <summary>
+    /// Gets the number of nodes in the AVL tree.
+    /// </summary>
+    /// <returns>The size of the tree.</returns>
+    public int Size() {
+        return nodeCount;
+    }
 
-    public Node FindMinimumNode(Node node){
+    /// <summary>
+    /// Finds the node with the minimum value in the given subtree.
+    /// </summary>
+    /// <param name="node">The root of the subtree to search.</param>
+    /// <returns>The node with the minimum value.</returns>
+    public Node FindMinimumNode(Node node) {
         Node temporary = node;
 
-        while(temporary.left != null){
-            temporary = temporary.left;
+        while (temporary.Left != null) {
+            temporary = temporary.Left;
         }
 
         return temporary;
     }
 
-    public int Height(){
-        if(root == null){ return 0; }
-        return root.height;
+    /// <summary>
+    /// Gets the height of the AVL tree.
+    /// </summary>
+    /// <returns>The height of the tree.</returns>
+    public int Height() {
+        if (root == null) {
+            return 0;
+        }
+        return root.Height;
     }
 
-    private void Update(Node node){
-        int leftNodeHeight = (node.left == null ? -1 : node.left.height);
-        int rightNodeHeight = (node.right == null ? -1 : node.right.height);
+    private void Update(Node node) {
+        int leftNodeHeight = (node.Left == null ? -1 : node.Left.Height);
+        int rightNodeHeight = (node.Right == null ? -1 : node.Right.Height);
 
-        node.height = Math.Max(leftNodeHeight, rightNodeHeight) + 1;
-        node.balanceFactor = rightNodeHeight - leftNodeHeight;
+        node.Height = Math.Max(leftNodeHeight, rightNodeHeight) + 1;
+        node.BalanceFactor = rightNodeHeight - leftNodeHeight;
     }
 
-    private Node Balance(Node node){
-        if(node.balanceFactor == -2){
-            if(node.left.balanceFactor <= 0){
+    private Node Balance(Node node) {
+        if (node.BalanceFactor == -2) {
+            if (node.Left.BalanceFactor <= 0) {
                 return LeftLeftCase(node);
             } else {
                 return LeftRightCase(node);
-            } 
-        } else if(node.balanceFactor == 2){
-            if(node.right.balanceFactor >= 0){
+            }
+        } else if (node.BalanceFactor == 2) {
+            if (node.Right.BalanceFactor >= 0) {
                 return RightRightCase(node);
             } else {
                 return RightLeftCase(node);

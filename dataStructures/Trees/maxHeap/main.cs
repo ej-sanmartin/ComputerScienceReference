@@ -1,59 +1,95 @@
 using System;
 
+/// <summary>
+/// Represents a max heap data structure.
+/// </summary>
 public class MaxHeap {
-    private int capacity = 10;
+    private const int InitialCapacity = 10;
+    private int capacity = InitialCapacity;
     private int size;
-    private int[] items = new int[capacity];
+    private int[] items;
 
-    private int leftChildIndex(int parentIndex){ return parentIndex * 2 + 1; }
-    private int rightChildIndex(int parentIndex){ return parentIndex * 2 + 2; }
-    private int parentIndex(int childIndex){ return (childIndex - 1)/2; }
+    /// <summary>
+    /// Initializes a new instance of the MaxHeap class.
+    /// </summary>
+    public MaxHeap() {
+        items = new int[capacity];
+    }
 
-    private bool hasLeftChild(int index){ return leftChildIndex(index) < size; }
-    private bool hasRightChild(int index){ return rightChildIndex(index) < size; }
-    private bool hasParent(int index){ return parentIndex(index) >= 0; }
+    private int GetLeftChildIndex(int parentIndex) {
+        return parentIndex * 2 + 1;
+    }
 
-    private int getLeftChild(int index){ return items[leftChildIndex(index)]; }
-    private int getRightChild(int index){ return items[rightChildIndex(index)]; }
-    private int getParent(int index){ return items[parentIndex(index)]; }
+    private int GetRightChildIndex(int parentIndex) {
+        return parentIndex * 2 + 2;
+    }
 
-    private void Swap(int a, int b){
+    private int GetParentIndex(int childIndex) {
+        return (childIndex - 1) / 2;
+    }
+
+    private bool HasLeftChild(int index) {
+        return GetLeftChildIndex(index) < size;
+    }
+
+    private bool HasRightChild(int index) {
+        return GetRightChildIndex(index) < size;
+    }
+
+    private bool HasParent(int index) {
+        return GetParentIndex(index) >= 0;
+    }
+
+    private int GetLeftChild(int index) {
+        return items[GetLeftChildIndex(index)];
+    }
+
+    private int GetRightChild(int index) {
+        return items[GetRightChildIndex(index)];
+    }
+
+    private int GetParent(int index) {
+        return items[GetParentIndex(index)];
+    }
+
+    private void Swap(int a, int b) {
         int temporary = items[a];
         items[a] = items[b];
         items[b] = temporary;
     }
 
-    private void HeapifyUp(){
+    private void HeapifyUp() {
         int index = size - 1;
-        while(hasParent(index) && getParent(index) < items[index]){
-            Swap(parentIndex(index), index);
-            index = parentIndex(index);
+        while (HasParent(index) && GetParent(index) < items[index]) {
+            Swap(GetParentIndex(index), index);
+            index = GetParentIndex(index);
         }
     }
 
-    private void HeapifyDown(){
+    private void HeapifyDown() {
         int index = 0;
 
-        while(hasLeftChild(index)){
-            int smallerChildIndex = leftChildIndex(index);
+        while (HasLeftChild(index)) {
+            int largerChildIndex = GetLeftChildIndex(index);
 
-            if(hasRightChild(index) && getRightChild(index) > getLeftChild(index)){
-                smallerChildIndex = rightChildIndex(index);
+            if (HasRightChild(index) && GetRightChild(index) > GetLeftChild(index)) {
+                largerChildIndex = GetRightChildIndex(index);
             }
 
-            if(items[index] > items[smallerChildIndex]){ break; }
-            else {
-                Swap(index, smallerChildIndex);
-                index = smallerChildIndex;
+            if (items[index] >= items[largerChildIndex]) {
+                break;
+            } else {
+                Swap(index, largerChildIndex);
+                index = largerChildIndex;
             }
         }
     }
 
-    private void EnsureCapacity(){
-        if(size == capacity){
-            int[] newItems = new int[capacity* 2];
-            
-            for(int i = 0; i < capacity; i++){
+    private void EnsureCapacity() {
+        if (size == capacity) {
+            int[] newItems = new int[capacity * 2];
+
+            for (int i = 0; i < capacity; i++) {
                 newItems[i] = items[i];
             }
 
@@ -62,9 +98,15 @@ public class MaxHeap {
         }
     }
 
-    // T - O(logn)
-    public int ExtractMax(){
-        if(size == 0){ throw new System.InvalidOperationException("Sorry, Max Heap is empty"); }
+    /// <summary>
+    /// Removes and returns the maximum element from the heap.
+    /// </summary>
+    /// <returns>The maximum element in the heap.</returns>
+    // T - O(log n)
+    public int ExtractMax() {
+        if (size == 0) {
+            throw new InvalidOperationException("Max heap is empty");
+        }
 
         int item = items[0];
         items[0] = items[size - 1];
@@ -73,8 +115,12 @@ public class MaxHeap {
         return item;
     }
 
-    // T - O(logn)
-    public void Insert(int item){
+    /// <summary>
+    /// Inserts a new element into the heap.
+    /// </summary>
+    /// <param name="item">The item to insert.</param>
+    // T - O(log n)
+    public void Insert(int item) {
         EnsureCapacity();
         items[size] = item;
         size++;

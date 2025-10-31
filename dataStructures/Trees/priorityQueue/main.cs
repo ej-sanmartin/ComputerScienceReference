@@ -1,30 +1,39 @@
 using System;
 using System.Collections.Generic;
 
-// Implemented as a max heap
+/// <summary>
+/// Represents a priority queue implemented as a max heap.
+/// </summary>
 public class PriorityQueue {
     private List<int> heap;
     private int size;
 
-    public PriorityQueue(){
+    /// <summary>
+    /// Initializes a new instance of the PriorityQueue class.
+    /// </summary>
+    public PriorityQueue() {
         heap = new List<int>();
         size = 0;
     }
 
-    private void Swap(int a, int b){
+    private void Swap(int a, int b) {
         int temporary = heap[a];
         heap[a] = heap[b];
         heap[b] = temporary;
     }
 
-    // T - O(logn)
-    public void Insert(int value){
+    /// <summary>
+    /// Inserts a new element into the priority queue.
+    /// </summary>
+    /// <param name="value">The value to insert.</param>
+    // T - O(log n)
+    public void Insert(int value) {
+        heap.Add(value);
         int position = size;
-        heap[position] = value;
 
         // HeapifyUp
         while (position > 0) {
-            int parent = (position + 1)/2 - 1;
+            int parent = (position - 1) / 2;
             if (heap[parent] >= heap[position]) {
                 break;
             }
@@ -35,10 +44,14 @@ public class PriorityQueue {
         size++;
     }
 
-    // T - O(logn)
-    public int Pop(){
+    /// <summary>
+    /// Removes and returns the highest priority element from the queue.
+    /// </summary>
+    /// <returns>The highest priority element.</returns>
+    // T - O(log n)
+    public int Pop() {
         if (size == 0) {
-            throw new System.InvalidOperationException("Priority Queue is empty, nothing to pop");
+            throw new InvalidOperationException("Priority Queue is empty, nothing to pop");
         }
 
         int data = heap[0];

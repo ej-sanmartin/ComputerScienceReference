@@ -1,6 +1,14 @@
+--[[
+Stack.lua
+Implements a stack data structure following Roblox Lua Style Guide.
+]]
+
 local Node = {}
 Node.__index = Node
 
+--- Creates a new Node with the given value
+-- @param value The value to store in the node
+-- @return A new Node instance
 function Node.new(value)
 	local self = setmetatable({}, Node)
 
@@ -13,7 +21,9 @@ end
 local Stack = {}
 Stack.__index = Stack
 
-function Stack.new(value)
+--- Creates a new Stack
+-- @return A new Stack instance
+function Stack.new()
 	local self = setmetatable({}, Stack)
 
 	self.__head = nil
@@ -22,11 +32,15 @@ function Stack.new(value)
 	return self
 end
 
-function Stack:count()
+--- Gets the size of the stack
+-- @return number The number of elements in the stack
+function Stack:Count()
 	return self.__size
 end
 
-function Stack:isEmpty()
+--- Checks if the stack is empty
+-- @return boolean True if empty, false otherwise
+function Stack:IsEmpty()
 	return self.__size == 0
 end
 

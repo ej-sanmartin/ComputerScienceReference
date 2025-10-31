@@ -1,23 +1,59 @@
-class Queue(object):
-  def __init__(self):
-    self.items = []
+"""Queue implementation using a list in Python."""
 
-  def enqueue(self, item):
-    self.items.insert(0, item)
+from typing import Any, List
 
-  def dequeue(self):
-    if not self.is_empty():
-      return self.items.pop()
 
-  def is_empty(self):
-    return len(self.items) == 0
+class Queue:
+    """A queue data structure implemented using a list."""
 
-  def peek(self):
-    if not self.is_empty():
-      return self.items[-1].value
+    def __init__(self) -> None:
+        """Initialize an empty queue."""
+        self.items: List[Any] = []
 
-  def __len__(self):
-    return self.size()
+    def enqueue(self, item: Any) -> None:
+        """Add an item to the end of the queue.
 
-  def size(self):
-    return len(self.items)
+        Args:
+            item: The item to add to the queue.
+        """
+        self.items.insert(0, item)
+
+    def dequeue(self) -> Any:
+        """Remove and return the item from the front of the queue.
+
+        Returns:
+            The item from the front of the queue, or None if empty.
+        """
+        if not self.is_empty():
+            return self.items.pop()
+        return None
+
+    def is_empty(self) -> bool:
+        """Check if the queue is empty.
+
+        Returns:
+            True if the queue is empty, False otherwise.
+        """
+        return len(self.items) == 0
+
+    def peek(self) -> Any:
+        """Return the item at the front of the queue without removing it.
+
+        Returns:
+            The item at the front of the queue, or None if empty.
+        """
+        if not self.is_empty():
+            return self.items[-1]
+        return None
+
+    def __len__(self) -> int:
+        """Return the length of the queue."""
+        return self.size()
+
+    def size(self) -> int:
+        """Return the number of items in the queue.
+
+        Returns:
+            The number of items in the queue.
+        """
+        return len(self.items)
