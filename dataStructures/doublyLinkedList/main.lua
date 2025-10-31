@@ -237,7 +237,7 @@ function DoublyLinkedList:addAfter(node, value)
   local current = self.__tail.previous
   local sentinel = Node.new(0)
   sentinel = self.__tail
-  while current ~= nill do
+  while current ~= nil do
     if current.value == node.value then
       if
         current.next.value == node.next.value
@@ -253,7 +253,7 @@ function DoublyLinkedList:addAfter(node, value)
       end
     end
 
-    sentintel = current
+    sentinel = current
     current = current.previous
   end
 end

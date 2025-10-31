@@ -45,18 +45,18 @@ public class SplayTree {
             else { return RotateRight(node); }
         } else if(key > node.key){
             if(node.right == null){ return node; }
-            if(key < node.right.key){
-                node.right.left = Splay(node.right.left.key);
+            if(key > node.right.key){
+                node.right.left = Splay(node.right.left, key);
                 if(node.right.left != null){
                     node.right = RotateRight(node.right);
                 }
-            } else if(key > node.right.left){
+            } else if(key < node.right.key){
                 node.right.right = Splay(node.right.right, key);
                 node = RotateLeft(node);
             }
 
-            if(node.right == null){ return null; }
-            else { RotateLeft(node); }
+            if(node.right == null){ return node; }
+            else { return RotateLeft(node); }
         } else {
             return node;
         }
@@ -74,6 +74,33 @@ public class SplayTree {
         node.right = newNode.left;
         newNode.left = node;
         return newNode;
+    }
+
+    private Node FindMin(Node node){
+        while(node.left != null){
+            node = node.left;
+        }
+        return node;
+    }
+
+    private Node RemoveHelper(Node node, int key){
+        if(node == null) return null;
+
+        if(key < node.key){
+            node.left = RemoveHelper(node.left, key);
+        } else if(key > node.key){
+            node.right = RemoveHelper(node.right, key);
+        } else {
+            if(node.left == null) return node.right;
+            if(node.right == null) return node.left;
+
+            Node minRight = FindMin(node.right);
+            node.key = minRight.key;
+            node.value = minRight.value;
+            node.right = RemoveHelper(node.right, minRight.key);
+        }
+
+        return node;
     }
 
     // T - O(logn)
@@ -119,12 +146,15 @@ public class SplayTree {
         root = Splay(root, key);
 
         if(key == root.key){
-            if(root.left != null){ root = root.right; }
-            else {
-                Node newNode = root.right;
+            if(root.left == null){
+                root = root.right;
+            } else if(root.right == null){
                 root = root.left;
-                Splay(root, key);
-                root.right = newNode;
+            } else {
+                Node minRight = FindMin(root.right);
+                root.key = minRight.key;
+                root.value = minRight.value;
+                root.right = RemoveHelper(root.right, minRight.key);
             }
         }
     }

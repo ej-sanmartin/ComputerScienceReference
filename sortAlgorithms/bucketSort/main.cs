@@ -14,9 +14,8 @@ public class BucketSort {
         }
 
         for(int i = 0; i < arr.Length; i++){
-            int bucketIndex = (int)(arr[i] * n);
-            if(bucketIndex >= n) bucketIndex = n - 1;
-            if(bucketIndex < 0) bucketIndex = 0;
+            int bucketIndex = Math.Min((int)(arr[i] * n), n - 1);
+            bucketIndex = Math.Max(bucketIndex, 0);
             buckets[bucketIndex].Add(arr[i]);
         }
 

@@ -8,7 +8,7 @@ public class PrimsGraph {
         int minIndex = -1;
 
         for(int vertex = 0; vertex < vertices; vertex++){
-            if(minimumSpanningTreeSet[vertrex] == false && key[vertex] < min){
+            if(minimumSpanningTreeSet[vertex] == false && key[vertex] < min){
                 min = key[vertex];
                 minIndex = vertex;
             }
