@@ -6,11 +6,10 @@ using System.Collections.Generic;
 // S - O(|V|) to a worst case of O(b^d)
 public class AStarGraph {
     private List<Node> open, close, path;
-    private int xStart, yEnd;
+    private int xStart, yStart, xEnd, yEnd;
     private bool diagonal;
     private int[][] maze;
     private Node current;
-    private int xEnd, yEnd;
 
     private class Node {
         public Node parent;
@@ -26,14 +25,16 @@ public class AStarGraph {
         }
     }
 
-    public AStarGraph(int[][] graph, int xStart, int yStart, bool diagonal){
+    public AStarGraph(int[][] graph, int xStart, int yStart, int xEnd, int yEnd, bool diagonal){
         this.open = new List<Node>();
         this.close = new List<Node>();
         this.path = new List<Node>();
-        this.maze = maze;
+        this.maze = graph;
         this.current = new Node(null, xStart, yStart, 0, 0);
         this.xStart = xStart;
         this.yStart = yStart;
+        this.xEnd = xEnd;
+        this.yEnd = yEnd;
         this.diagonal = diagonal;
     }
 

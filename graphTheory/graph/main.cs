@@ -11,7 +11,7 @@ public class AdjacencyListGraph<T> {
     }
 
     private List<T> AddVertex(T key){
-        List<T> vertex = new List<t>();
+        List<T> vertex = new List<T>();
         vertexList.Add(vertex);
         adjacencyList.Add(key, vertex);
 

@@ -14,7 +14,7 @@ public class HashTable {
         }
     }
 
-    public HashTable(){ data = HashEntry[initialCapacity]; }
+    public HashTable(){ data = new HashEntry[initialCapacity]; }
 
     // T - O(1)
     private int GetIndex(String key){
@@ -28,7 +28,7 @@ public class HashTable {
         int index = GetIndex(key);
         HashEntry entry = new HashEntry(key, value);
 
-        if(data[index] == null){ data[index] = value; }
+        if(data[index] == null){ data[index] = entry; }
         else {
             HashEntry entries = data[index];
             while(entries.next != null){

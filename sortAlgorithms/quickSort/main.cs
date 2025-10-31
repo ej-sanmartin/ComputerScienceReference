@@ -38,7 +38,6 @@ public class QuickSort {
 public class QS {
     public void QS(int[] arr){
         QSHelper(arr, 0, arr.Length - 1);
-        return arr;
     }
     
     private void Swap(int[] arr, int a, int b){

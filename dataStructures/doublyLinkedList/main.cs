@@ -17,7 +17,7 @@ public class DoublyLinkedList {
 
     // T - O(1)
     public void Clear(){
-        head == null;
+        head = null;
         size = 0;
     }
 

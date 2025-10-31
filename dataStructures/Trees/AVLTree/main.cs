@@ -62,7 +62,7 @@ public class AVLTree {
         return LeftLeftCase(node);
     }
 
-    private Node RightRightCase(Node node){ return LeftRotation(); }
+    private Node RightRightCase(Node node){ return LeftRotation(node); }
 
     private Node RightLeftCase(Node node){
         node.right = RightRotation(node.right);
@@ -99,8 +99,6 @@ public class AVLTree {
     }
 
     public bool Insert(int value){
-        if(value == null){ return false; }
-
         if(!ContainsHelper(root, value)){
             root = InsertHelper(root, value);
             nodeCount++;
@@ -121,9 +119,7 @@ public class AVLTree {
     }
 
     public bool Remove(int value){
-        if(value == null){ return false; }
-
-        if(Contains(root, value)){
+        if(ContainsHelper(root, value)){
             root = RemoveHelper(root, value);
             nodeCount--;
             return true;

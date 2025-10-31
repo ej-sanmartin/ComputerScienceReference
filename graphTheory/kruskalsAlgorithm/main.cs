@@ -16,7 +16,7 @@ public class KruskalsGraph {
     public KruskalsGraph(int vertices, int edges){
         this.vertices = vertices;
         this.edges = edges;
-        edges = new Edge[edges];
+        edgesArr = new Edge[edges];
 
         for(int edge = 0; edge < edges; edge++){
             edgesArr[edge] = new Edge();
@@ -32,52 +32,49 @@ public class KruskalsGraph {
     }
 
     private void Union(Subset[] subsets, int x, int y){
-        int xRoot = Find(subset, x);
-        int yRoot = Find(subset, y);
+        int xRoot = Find(subsets, x);
+        int yRoot = Find(subsets, y);
 
-        if(subset[xRoot].rank < subset[yRoot].rank){
-            subset[xRoot].parent = yRoot;
-        } else if(subset[xRoot].rank > subset[yRoot].rank){
-            subset[yRoot].parent = xRoot;
+        if(subsets[xRoot].rank < subsets[yRoot].rank){
+            subsets[xRoot].parent = yRoot;
+        } else if(subsets[xRoot].rank > subsets[yRoot].rank){
+            subsets[yRoot].parent = xRoot;
         } else {
-            subset[yRoot].parent = xRoot;
-            ++subset[xRoot].rank;
+            subsets[yRoot].parent = xRoot;
+            ++subsets[xRoot].rank;
         }
     }
 
-    public void KruskalsAlgorithm(Graph graph){
-        int vertices = graph.vertices;
+    public void KruskalsAlgorithm(){
         Edge[] result = new Edge[vertices];
-        int e = i = 0;
-        
-        for (vertex = 0; vertex < V; vertex++){
+        int e = 0, i = 0;
+
+        for (int vertex = 0; vertex < vertices; vertex++){
             result[vertex] = new Edge();
         }
 
         Array.Sort(edgesArr);
 
-        Subset[] subset = new Subset[vertices];
-        
-        for (int vertext = 0; vetext < vertices; vertex++){
-            subset[vertex] = new Subset();
+        Subset[] subsets = new Subset[vertices];
+
+        for (int vertex = 0; vertex < vertices; vertex++){
+            subsets[vertex] = new Subset();
         }
 
         for(int vertex = 0; vertex < vertices; vertex++){
-            subset[vertex].parent = i;
-            subset[vertex].rank = 0;
+            subsets[vertex].parent = vertex;
+            subsets[vertex].rank = 0;
         }
-        
-        i = 0;
 
         while(e < vertices - 1){
-            Edge nextEdge = graph.edgesArr[i++];
+            Edge nextEdge = edgesArr[i++];
 
-            int x = Find(subset, nextEdge.source);
-            int y = Find(subset, nextEdge.destination);
+            int x = Find(subsets, nextEdge.source);
+            int y = Find(subsets, nextEdge.destination);
 
             if(x != y){
                 result[e++] = nextEdge;
-                Union(subset, x, y);
+                Union(subsets, x, y);
             }
         }
 

@@ -14,7 +14,7 @@ public class HeapSort {
         }
     }
 
-    private static void Heaify(int[] arr, int n, int i){
+    private static void Heapify(int[] arr, int n, int i){
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -24,7 +24,7 @@ public class HeapSort {
 
         if(largest != i){
             Swap(i, largest, arr);
-            Heaify(arr, n, largest);
+            Heapify(arr, n, largest);
         }
     }
 
