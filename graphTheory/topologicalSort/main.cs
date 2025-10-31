@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-/* 
+/// <summary>
+/// Implements topological sorting for directed acyclic graphs (DAGs).
+/// </summary>
+/*
     T - O(V + E), S - O(V)
     This implementation will result in the stack containing the topologically
     sorted items. You can do what you wish with it, in this file I ended up
@@ -11,24 +14,33 @@ public class TopologicalSortGraph {
     private int vertices;
     private List<List<int>> adjacencyList;
 
-    public TopologicalSortGraph(int vertices){
+    /// <summary>
+    /// Initializes a new instance of the TopologicalSortGraph class.
+    /// </summary>
+    /// <param name="vertices">The number of vertices in the graph.</param>
+    public TopologicalSortGraph(int vertices) {
         this.vertices = vertices;
         adjacencyList = new List<List<int>>(vertices);
 
-        for(int i = 0; i < vertices; i++){
+        for (int i = 0; i < vertices; i++) {
             adjacencyList.Add(new List<int>());
         }
     }
 
-    public void AddEdge(int vertex, int edge){
+    /// <summary>
+    /// Adds a directed edge from one vertex to another.
+    /// </summary>
+    /// <param name="vertex">The source vertex.</param>
+    /// <param name="edge">The destination vertex.</param>
+    public void AddEdge(int vertex, int edge) {
         adjacencyList[vertex].Add(edge);
     }
 
-    private void TopologicalSortHelper(int vertex, bool[] visited, Stack<int> stack){
+    private void TopologicalSortHelper(int vertex, bool[] visited, Stack<int> stack) {
         visited[vertex] = true;
 
-        foreach(var adjacent in adjacencyList[vertex]){
-            if(!visited[adjacent]){
+        foreach (int adjacent in adjacencyList[vertex]) {
+            if (!visited[adjacent]) {
                 TopologicalSortHelper(adjacent, visited, stack);
             }
         }
@@ -36,12 +48,15 @@ public class TopologicalSortGraph {
         stack.Push(vertex);
     }
 
-    public void TopologicalSort(){
+    /// <summary>
+    /// Performs topological sorting on the graph.
+    /// </summary>
+    public void TopologicalSort() {
         Stack<int> stack = new Stack<int>();
         bool[] visited = new bool[vertices];
 
-        for(int vertex = 0; vertex < vertices; vertex++){
-            if(visited[vertex] == false){
+        for (int vertex = 0; vertex < vertices; vertex++) {
+            if (!visited[vertex]) {
                 TopologicalSortHelper(vertex, visited, stack);
             }
         }
