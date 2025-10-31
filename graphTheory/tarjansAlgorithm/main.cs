@@ -1,34 +1,48 @@
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Implements Tarjan's algorithm for finding strongly connected components.
+/// </summary>
 // T - O(|V| + |E|), S - O(|V|)
-public class TarjansGraph{
+public class TarjansGraph {
     private int vertices;
-    private List<int> adjacencyList;
-
+    private List<int>[] adjacencyList;
     private int time;
 
-    public TarjansGraph(int vertices){
+    /// <summary>
+    /// Initializes a new instance of the TarjansGraph class.
+    /// </summary>
+    /// <param name="vertices">The number of vertices in the graph.</param>
+    public TarjansGraph(int vertices) {
         this.vertices = vertices;
         adjacencyList = new List<int>[vertices];
+        for (int i = 0; i < vertices; i++) {
+            adjacencyList[i] = new List<int>();
+        }
     }
 
-    public void AddEdge(int vertex, int weight){
-        adjacencyList[vertex].Add(weight);
+    /// <summary>
+    /// Adds a directed edge from one vertex to another.
+    /// </summary>
+    /// <param name="vertex">The source vertex.</param>
+    /// <param name="adjacent">The destination vertex.</param>
+    public void AddEdge(int vertex, int adjacent) {
+        adjacencyList[vertex].Add(adjacent);
     }
 
-    private void TarjansAlgorithmHelper(int current, int[] discoveryTimes, int[] earliestVisitedVertex, Stack<int> stack){
-        discoveryTimes[current] = earliestVisitedVertex[curret] = ++time;
+    private void TarjansAlgorithmHelper(int current, int[] discoveryTimes, int[] earliestVisitedVertex, Stack<int> stack) {
+        discoveryTimes[current] = earliestVisitedVertex[current] = ++time;
         stack.Push(current);
 
-        foreach(int adjacent in adjacencyList){
+        foreach (int adjacent in adjacencyList[current]) {
             int vertex = adjacent;
 
-            if(discoveryTimes[vertex] == -1){
+            if (discoveryTimes[vertex] == -1) {
                 TarjansAlgorithmHelper(vertex, discoveryTimes, earliestVisitedVertex, stack);
                 earliestVisitedVertex[current] = Math.Min(earliestVisitedVertex[current], earliestVisitedVertex[vertex]);
-            } else if(stack.Contains(vertex)){
-                earliestVisitedVertex[current] = Math.Min(earliestVisitedVertex[current, earliestVisitedVertex[vertex]]);
+            } else if (stack.Contains(vertex)) {
+                earliestVisitedVertex[current] = Math.Min(earliestVisitedVertex[current], discoveryTimes[vertex]);
             }
         }
 

@@ -2,6 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+/// <summary>
+/// Implements the A* pathfinding algorithm for grid-based graphs.
+/// </summary>
 // T - O(|E|) to a worst case of O(b^d)
 // S - O(|V|) to a worst case of O(b^d)
 public class AStarGraph {
@@ -11,21 +14,35 @@ public class AStarGraph {
     private int[][] maze;
     private Node current;
 
+    /// <summary>
+    /// Represents a node in the A* search graph.
+    /// </summary>
     private class Node {
-        public Node parent;
-        public int x, y;
-        public double cost, huestic;
-        
-        public Node(Node parent, int xPosition, int yPosition, double g, double h){
-            this.parent = parent;
-            this.x = xPosition;
-            this.y = yPosition;
-            this.cost = g;
-            this.huestic = h;
+        public Node Parent { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public double Cost { get; set; }
+        public double Heuristic { get; set; }
+
+        public Node(Node parent, int xPosition, int yPosition, double g, double h) {
+            Parent = parent;
+            X = xPosition;
+            Y = yPosition;
+            Cost = g;
+            Heuristic = h;
         }
     }
 
-    public AStarGraph(int[][] graph, int xStart, int yStart, int xEnd, int yEnd, bool diagonal){
+    /// <summary>
+    /// Initializes a new instance of the AStarGraph class.
+    /// </summary>
+    /// <param name="graph">The grid representation of the maze.</param>
+    /// <param name="xStart">The starting X coordinate.</param>
+    /// <param name="yStart">The starting Y coordinate.</param>
+    /// <param name="xEnd">The ending X coordinate.</param>
+    /// <param name="yEnd">The ending Y coordinate.</param>
+    /// <param name="diagonal">Whether diagonal movement is allowed.</param>
+    public AStarGraph(int[][] graph, int xStart, int yStart, int xEnd, int yEnd, bool diagonal) {
         this.open = new List<Node>();
         this.close = new List<Node>();
         this.path = new List<Node>();
@@ -38,15 +55,30 @@ public class AStarGraph {
         this.diagonal = diagonal;
     }
 
-    private bool FindNeighborsInList(List<Node> list, Node node){
-        return list.SingleOrDefault(item => item.x == node.x || item.y == node.y) != null;
+    /// <summary>
+    /// Checks if a node with the same coordinates exists in the given list.
+    /// </summary>
+    /// <param name="list">The list to search in.</param>
+    /// <param name="node">The node to search for.</param>
+    /// <returns>True if a node with the same coordinates exists, false otherwise.</returns>
+    private bool FindNeighborsInList(List<Node> list, Node node) {
+        return list.SingleOrDefault(item => item.X == node.X && item.Y == node.Y) != null;
     }
 
-    private double Distance(int x, int y){
-        if(this.diagonal){
-            return Math.Sqrt(Math.Pow(this.current.x + x - this.xEnd, 2) + Math.Pow(this.current.y + y - this.yEnd));
+    /// <summary>
+    /// Calculates the heuristic distance from the current position to the end position.
+    /// </summary>
+    /// <param name="x">The X offset from current position.</param>
+    /// <param name="y">The Y offset from current position.</param>
+    /// <returns>The heuristic distance.</returns>
+    private double Distance(int x, int y) {
+        int targetX = current.X + x;
+        int targetY = current.Y + y;
+
+        if (diagonal) {
+            return Math.Sqrt(Math.Pow(targetX - xEnd, 2) + Math.Pow(targetY - yEnd, 2));
         } else {
-            return Math.Abs(this.current.x + x - this.xEnd) + Math.Abs(this.current.y + y - this.yEnd);
+            return Math.Abs(targetX - xEnd) + Math.Abs(targetY - yEnd);
         }
     }
 
